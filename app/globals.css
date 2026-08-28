@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #03040c;
+  --surface: #07091a;
+  --card: #0b0d1f;
+  --card2: #0f1128;
+  --border: rgba(70, 120, 255, 0.1);
+  --border2: rgba(70, 120, 255, 0.22);
+  --accent: #00b8ff;
+  --accent2: #3a6fff;
+  --accent3: #00ffb8;
+  --text: #dde8ff;
+  --text2: #6a7a9a;
+  --text3: #323d58;
+  --gold: #c8a96e;
+  --gold2: rgba(200, 169, 110, 0.1);
+
+  --metric-label: #8fa8c8;
+  --metric-value: #ffffff;
+  --metric-sub: #7ec8e3;
+}
+
+@theme inline {
+  --font-heading: var(--font-bricolage);
+  --font-body: var(--font-manrope);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading), sans-serif;
+}
+
+.font-mono-data {
+  font-family: var(--font-mono), monospace;
+}
+
+::selection {
+  background: rgba(0, 184, 255, 0.25);
+  color: #fff;
+}
+
+/* Gradient shimmer heading text */
+.gradient-shimmer {
+  background: linear-gradient(100deg, #dde8ff 20%, var(--accent) 40%, var(--accent3) 50%, var(--accent) 60%, #dde8ff 80%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: -220% 50%;
+  }
+}
+
+/* Hero scan line */
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.35;
+  animation: scan 9s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* Pulsing badge dot */
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+}
+
+/* Hero grid background */
+.hero-grid-bg {
+  background-image: linear-gradient(rgba(58, 111, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58, 111, 255, 0.035) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+/* Typing indicator dots */
+.typing-dot {
+  animation: typing-bounce 1.2s infinite ease-in-out;
+}
+.typing-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.typing-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes typing-bounce {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border2);
+  border-radius: 8px;
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-body), sans-serif;
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text3);
+}
