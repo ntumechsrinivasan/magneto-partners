@@ -10,6 +10,8 @@ import type {
   QuickQuery,
   ValueCardData,
   FellowshipTag,
+  Testimonial,
+  NarrativePillar,
 } from "./types";
 
 export const NAV_LINKS = [
@@ -53,56 +55,56 @@ export const HERO_METRICS: Metric[] = [
 
 export const SERVICES: Service[] = [
   {
-    icon: "🧲",
+    icon: "magnet",
     tag: "TIER-1 ADVISORY",
     title: "Magnet Strategy Advisory",
     description:
       "End-to-end strategic advisory for organisations dependent on permanent magnet supply. We assess grade requirements, sourcing risk, and long-term procurement architecture.",
   },
   {
-    icon: "🌐",
+    icon: "globe",
     tag: "MARKET INTELLIGENCE",
     title: "Rare-Earth Supply Intelligence",
     description:
       "Real-time market intelligence on rare-earth oxide pricing, trade flows, geopolitical disruption signals, and supply-chain concentration metrics across 47 jurisdictions.",
   },
   {
-    icon: "🔍",
+    icon: "search",
     tag: "DUE DILIGENCE",
     title: "Supplier Assessment & Due Diligence",
     description:
       "Proprietary due diligence frameworks for magnet producers, sintering facilities, and alloy manufacturers — covering technical capability, ESG compliance, and financial resilience.",
   },
   {
-    icon: "⚡",
+    icon: "zap",
     tag: "EV SECTOR",
     title: "EV Motor Materials Consulting",
     description:
       "Specialised advisory for EV powertrain engineers and procurement leads. Magnet grade selection, thermal derating analysis, cost modelling, and second-source qualification.",
   },
   {
-    icon: "♻️",
+    icon: "recycle",
     tag: "CIRCULAR ECONOMY",
     title: "Recycling & Circular Economy",
     description:
       "Techno-economic analysis of magnet recycling pathways — HPMS, hydrometallurgy, direct demagnetisation — with market sizing, policy mapping, and investment case development.",
   },
   {
-    icon: "🏭",
+    icon: "factory",
     tag: "LOCALISATION",
     title: "Manufacturing Localisation Strategy",
     description:
       "Feasibility and site selection for magnet production capacity outside China — India, Vietnam, Europe, North America — with regulatory, logistics, and cost-parity modelling.",
   },
   {
-    icon: "📊",
+    icon: "chart",
     tag: "RESEARCH",
     title: "Industrial Market Intelligence",
     description:
       "Bespoke research covering motor market sizing, demand segmentation, competitive landscape mapping, and technology adoption curves across global industrial sectors.",
   },
   {
-    icon: "🤖",
+    icon: "cpu",
     tag: "AI-POWERED",
     title: "AI-Driven Materials Insights",
     description:
@@ -112,7 +114,7 @@ export const SERVICES: Service[] = [
 
 export const INDUSTRIES: Industry[] = [
   {
-    icon: "🚗",
+    icon: "car",
     name: "Electric Vehicles",
     cagr: "+38% CAGR",
     bars: [40, 55, 65, 80, 100],
@@ -120,7 +122,7 @@ export const INDUSTRIES: Industry[] = [
       "EVs require 5–8× the magnet content of ICE vehicles. Over 30 car components rely on magnets — from power steering to ABS. Dr Gopalan's research directly addresses the EV motor magnet supply challenge.",
   },
   {
-    icon: "✈️",
+    icon: "plane",
     name: "Aerospace",
     cagr: "+12% CAGR",
     bars: [50, 58, 70, 75, 85],
@@ -128,7 +130,7 @@ export const INDUSTRIES: Industry[] = [
       "Actuation systems, turbine components, and defence electronics demand the highest-spec SmCo and NdFeB grades — materials Dr Gopalan developed for DRDO and ISRO programmes.",
   },
   {
-    icon: "🤖",
+    icon: "bot",
     name: "Industrial Robotics",
     cagr: "+29% CAGR",
     bars: [30, 45, 65, 80, 100],
@@ -136,7 +138,7 @@ export const INDUSTRIES: Industry[] = [
       "Collaborative robots and servo motors require high-density, thermally-stable permanent magnets at scale.",
   },
   {
-    icon: "💨",
+    icon: "wind",
     name: "Renewable Energy",
     cagr: "+22% CAGR",
     bars: [35, 50, 68, 82, 95],
@@ -144,7 +146,7 @@ export const INDUSTRIES: Industry[] = [
       "Direct-drive wind turbines use 600kg+ of magnets per MW. For 2–5 GW turbines, over 2,000 kg of high-performance magnets may be needed.",
   },
   {
-    icon: "🛡️",
+    icon: "shield",
     name: "Defence Manufacturing",
     cagr: "+16% CAGR",
     bars: [60, 65, 72, 80, 88],
@@ -152,7 +154,7 @@ export const INDUSTRIES: Industry[] = [
       "SmCo₅ magnets in missile guidance (Prithvi), satellite servo accelerometers, momentum wheels — the most supply-chain-sensitive magnet consumer.",
   },
   {
-    icon: "⚙️",
+    icon: "cog",
     name: "Industrial Automation",
     cagr: "+19% CAGR",
     bars: [45, 55, 68, 78, 90],
@@ -160,7 +162,7 @@ export const INDUSTRIES: Industry[] = [
       "Conveyor systems, magnetic separators, and linear actuators — foundational to smart factory infrastructure globally.",
   },
   {
-    icon: "📱",
+    icon: "smartphone",
     name: "Consumer Electronics",
     cagr: "+8% CAGR",
     bars: [75, 78, 80, 83, 88],
@@ -256,28 +258,67 @@ export const ABOUT_STATS: Credential[] = [
 
 export const VALUE_CARDS: ValueCardData[] = [
   {
-    icon: "⚙️",
+    icon: "cog",
     title: "Industrial Depth, Strategic Breadth",
     description:
       "Our advisory has operated inside DRDO's national mission programmes, ARCI's automotive energy labs, and NIMS Japan's magnet research — understanding engineering constraints, commercial pressures, and geopolitical realities simultaneously.",
   },
   {
-    icon: "🌐",
+    icon: "globe",
     title: "Geopolitically-Aware Intelligence",
     description:
       "Rare-earth markets are political markets. Dr Gopalan has tracked China's resource strategy since Program 863. We translate policy signals from China, India's IREL ecosystem, the US, EU, Japan, and Australia into actionable procurement intelligence.",
   },
   {
-    icon: "🏛️",
+    icon: "landmark",
     title: "Government & National Mission Experience",
     description:
       "Dr Gopalan served 22+ years on national mission projects at DRDO and ISRO. He spearheaded the Technical Research Centre at IIT Madras Research Park and set up India's National Facility for Atom Probe Tomography. We understand what sovereign supply-chain security actually means in practice.",
   },
   {
-    icon: "🔒",
+    icon: "lock",
     title: "Client Confidentiality First",
     description:
       "We operate under strict information barriers between client engagements. Our clients trust us with their most sensitive supply-chain architectures. That trust is the foundation of everything we do.",
+  },
+];
+
+export const NARRATIVE_PILLARS: NarrativePillar[] = [
+  {
+    eyebrow: "CLARITY",
+    headline: "See the supply chain before it moves.",
+    copy: "Materials markets don't wait for board approval. We give you the signal early enough to actually act on it.",
+  },
+  {
+    eyebrow: "ACCESS",
+    headline: "A direct line to 35 years in the field.",
+    copy: "Not a report written by a junior analyst. Direct strategic counsel from the person who helped build India's magnet research programmes.",
+  },
+  {
+    eyebrow: "FORESIGHT",
+    headline: "Plan for the market you'll face, not the one you're in.",
+    copy: "From localisation strategy to recycling economics, we help you position for where critical materials are headed next.",
+  },
+];
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    quote:
+      "Magneto gave us the confidence to renegotiate our sourcing contract six months before the market shifted. That's not something a market report gives you.",
+    attribution: "VP, Global Procurement",
+    role: "Tier-1 EV Supplier",
+  },
+  {
+    quote:
+      "Dr Gopalan doesn't just know the chemistry — he knows the politics behind it. That combination is rare, and it's exactly what our board needed.",
+    attribution: "Chief Strategy Officer",
+    role: "Renewable Energy Developer",
+  },
+  {
+    quote:
+      "We came in looking for a grade recommendation. We left with an entire localisation roadmap.",
+    attribution: "Head of Materials Engineering",
+    role: "Aerospace Manufacturer",
   },
 ];
 

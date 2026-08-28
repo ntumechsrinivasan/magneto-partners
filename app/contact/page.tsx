@@ -17,12 +17,13 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="px-8 py-24">
-      <div className="mx-auto flex max-w-[1100px] flex-col gap-14">
+    <main className="px-6 py-24 lg:px-10">
+      <div className="mx-auto flex max-w-[1000px] flex-col gap-16">
         <SectionHeader
-          tag="SPEAK TO AN EXPERT"
-          title="Book Time with Dr R Gopalan"
+          tag="Speak to an Expert"
+          title="Book time with Dr R Gopalan"
           description="INAE Fellow. PhD IIT Madras. 35+ years. 200+ publications. h-index 31. One of India's foremost authorities on rare-earth permanent magnets and EV energy materials."
+          align="left"
         />
 
         <DrGopalanProfile />

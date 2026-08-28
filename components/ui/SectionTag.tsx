@@ -1,7 +1,17 @@
-export default function SectionTag({ children }: { children: React.ReactNode }) {
+export default function SectionTag({
+  children,
+  inverse = false,
+}: {
+  children: React.ReactNode;
+  inverse?: boolean;
+}) {
   return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border2)] bg-[rgba(0,184,255,0.05)] px-[14px] py-[6px] font-[family-name:var(--font-mono)] text-[9.5px] uppercase tracking-[0.15em] text-[var(--accent)]">
-      <span className="h-[5px] w-[5px] rounded-full bg-[var(--accent)]" />
+    <span
+      className={`flex items-center gap-2 text-[11.5px] font-semibold uppercase tracking-[0.14em] ${
+        inverse ? "text-[var(--ink-band-text2)]" : "text-[var(--accent)]"
+      }`}
+    >
+      <span className="h-[6px] w-[6px] rounded-full bg-[var(--accent)]" />
       {children}
     </span>
   );

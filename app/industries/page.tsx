@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 
 export default function IndustriesPage() {
   return (
-    <main className="px-8 py-24">
-      <div className="mx-auto max-w-[1280px]">
-        <SectionHeader tag="INDUSTRIES" title="Sectors We Power" />
-        <div className="grid grid-cols-2 gap-[10px] sm:grid-cols-3 lg:grid-cols-4">
+    <main className="px-6 py-24 lg:px-10">
+      <div className="mx-auto max-w-[1240px]">
+        <SectionHeader tag="Industries" title="Sectors we power" align="left" />
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {INDUSTRIES.map((industry, i) => (
             <IndustryCard key={industry.name} industry={industry} index={i} />
           ))}

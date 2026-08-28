@@ -2,29 +2,31 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Icon from "./Icon";
 import type { Service } from "@/lib/types";
 
 export default function ServiceCard({ service, index }: { service: Service; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: (index % 4) * 0.08 }}
-      className="group relative flex flex-col gap-4 overflow-hidden bg-[var(--card)] p-6 transition-colors duration-300 hover:bg-[var(--card2)]"
+      transition={{ duration: 0.4, delay: (index % 4) * 0.07 }}
+      className="group relative flex flex-col gap-4 border border-[var(--border)] bg-[var(--card)] p-7 transition-all duration-300 hover:border-[var(--border2)] hover:shadow-[0_12px_28px_rgba(23,20,15,0.06)]"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(0,184,255,0.06),transparent_60%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-      <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-[var(--accent)] opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100" />
-      <div className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-[rgba(0,184,255,0.08)] text-xl">
-        {service.icon}
+      <ArrowUpRight className="absolute right-6 top-6 h-4 w-4 text-[var(--accent)] opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent)]">
+        <Icon name={service.icon} className="h-5 w-5" strokeWidth={1.75} />
       </div>
-      <span className="font-[family-name:var(--font-mono)] text-[8.5px] uppercase tracking-[0.15em] text-[var(--accent)]">
+      <span className="text-[10.5px] font-semibold uppercase tracking-[0.12em] text-[var(--text3)]">
         {service.tag}
       </span>
-      <h3 className="font-[family-name:var(--font-heading)] text-[17px] font-bold leading-snug text-white">
+      <h3 className="font-[family-name:var(--font-heading)] text-[19px] font-medium leading-snug text-[var(--ink)]">
         {service.title}
       </h3>
-      <p className="text-[13px] font-light leading-[1.65] text-[var(--text2)]">{service.description}</p>
+      <p className="text-[13.5px] font-light leading-[1.65] text-[var(--text2)]">
+        {service.description}
+      </p>
     </motion.div>
   );
 }

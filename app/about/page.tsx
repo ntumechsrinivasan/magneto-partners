@@ -12,16 +12,16 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="px-8 py-24">
-      <div className="mx-auto max-w-[1280px]">
+    <main className="px-6 py-24 lg:px-10">
+      <div className="mx-auto max-w-[1240px]">
         <SectionHeader
-          tag="ABOUT"
-          title="The Intelligence Layer for Strategic Materials"
+          tag="About"
+          title="The intelligence layer for strategic materials"
           align="left"
         />
-        <div className="grid grid-cols-1 gap-14 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-20">
           <div className="flex flex-col gap-8">
-            <div className="flex flex-col gap-5 text-[15px] font-light leading-[1.76] text-[var(--text2)]">
+            <div className="flex flex-col gap-5 text-[16px] font-light leading-[1.8] text-[var(--text2)]">
               <p>
                 Magneto Partners was founded on a single conviction: that the future of industrial
                 civilisation is gated by access to advanced magnetic materials — and that most
@@ -45,7 +45,7 @@ export default function AboutPage() {
             <StatGrid stats={ABOUT_STATS} />
           </div>
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-8">
             {VALUE_CARDS.map((value, i) => (
               <ValueCard key={value.title} value={value} index={i} />
             ))}

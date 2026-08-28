@@ -83,3 +83,15 @@ export interface ValueCardData {
 export interface FellowshipTag {
   label: string;
 }
+
+export interface Testimonial {
+  quote: string;
+  attribution: string;
+  role: string;
+}
+
+export interface NarrativePillar {
+  eyebrow: string;
+  headline: string;
+  copy: string;
+}

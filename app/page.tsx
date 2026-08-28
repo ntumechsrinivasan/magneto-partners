@@ -1,10 +1,14 @@
 import Link from "next/link";
 import Hero from "@/components/sections/Hero";
 import SectionHeader from "@/components/ui/SectionHeader";
+import SectionTag from "@/components/ui/SectionTag";
 import ServiceCard from "@/components/ui/ServiceCard";
 import IndustryCard from "@/components/ui/IndustryCard";
 import InsightCard from "@/components/ui/InsightCard";
-import { SERVICES, INDUSTRIES, INSIGHTS } from "@/lib/constants";
+import TestimonialCard from "@/components/ui/TestimonialCard";
+import NarrativePillar from "@/components/ui/NarrativePillar";
+import Button from "@/components/ui/Button";
+import { SERVICES, INDUSTRIES, INSIGHTS, NARRATIVE_PILLARS, TESTIMONIALS } from "@/lib/constants";
 
 export default function HomePage() {
   const featuredServices = SERVICES.slice(0, 4);
@@ -15,77 +19,89 @@ export default function HomePage() {
     <main>
       <Hero />
 
-      <section className="px-8 py-24">
-        <div className="mx-auto max-w-[1280px]">
+      <section className="border-b border-[var(--border)] px-6 py-24 lg:px-10">
+        <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-12 sm:grid-cols-3 sm:gap-8">
+          {NARRATIVE_PILLARS.map((pillar, i) => (
+            <NarrativePillar key={pillar.eyebrow} pillar={pillar} index={i} />
+          ))}
+        </div>
+      </section>
+
+      <section className="px-6 py-24 lg:px-10">
+        <div className="mx-auto max-w-[1240px]">
           <SectionHeader
-            tag="SERVICES"
-            title="Strategic Consulting for Critical Materials"
+            tag="Services"
+            title="Strategic consulting for critical materials"
             description="From supply-chain intelligence to advanced manufacturing strategy — operating at the intersection of geopolitics, materials science, and industrial AI."
+            align="left"
           />
-          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[14px] bg-[var(--border)] sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-px overflow-hidden bg-[var(--border)] sm:grid-cols-2 lg:grid-cols-4">
             {featuredServices.map((service, i) => (
               <ServiceCard key={service.title} service={service} index={i} />
             ))}
           </div>
-          <div className="mt-8 flex justify-center">
-            <Link
-              href="/services"
-              className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-[var(--accent)] hover:underline"
-            >
-              View all services →
-            </Link>
+          <div className="mt-10">
+            <Button href="/services" variant="ghost" showArrow>
+              View all services
+            </Button>
           </div>
         </div>
       </section>
 
-      <section className="px-8 py-24">
-        <div className="mx-auto max-w-[1280px]">
-          <SectionHeader tag="INDUSTRIES" title="Sectors We Power" />
-          <div className="grid grid-cols-2 gap-[10px] sm:grid-cols-4">
+      <section className="border-t border-[var(--border)] bg-[var(--bg-alt)] px-6 py-24 lg:px-10">
+        <div className="mx-auto max-w-[1240px]">
+          <SectionHeader tag="Industries" title="Sectors we power" align="left" />
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
             {featuredIndustries.map((industry, i) => (
               <IndustryCard key={industry.name} industry={industry} index={i} />
             ))}
           </div>
-          <div className="mt-8 flex justify-center">
-            <Link
-              href="/industries"
-              className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-[var(--accent)] hover:underline"
-            >
-              Explore all industries →
-            </Link>
+          <div className="mt-10">
+            <Button href="/industries" variant="ghost" showArrow>
+              Explore all industries
+            </Button>
           </div>
         </div>
       </section>
 
-      <section className="px-8 py-24">
-        <div className="mx-auto max-w-[1280px]">
-          <SectionHeader tag="INSIGHTS" title="Industrial Intelligence & Market Research" />
-          <div className="grid grid-cols-1 gap-[14px]">
+      <section className="px-6 py-24 lg:px-10">
+        <div className="mx-auto max-w-[1240px]">
+          <SectionHeader tag="Testimonials" title="Trusted by materials-critical teams" align="left" />
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+            {TESTIMONIALS.map((testimonial, i) => (
+              <TestimonialCard key={testimonial.attribution} testimonial={testimonial} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-[var(--border)] bg-[var(--bg-alt)] px-6 py-24 lg:px-10">
+        <div className="mx-auto max-w-[1240px]">
+          <SectionHeader tag="Insights" title="Industrial intelligence & market research" align="left" />
+          <div className="grid grid-cols-1 gap-10">
             <InsightCard insight={featuredInsight} index={0} />
           </div>
-          <div className="mt-8 flex justify-center">
-            <Link
-              href="/insights"
-              className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.15em] text-[var(--accent)] hover:underline"
-            >
-              Read all insights →
-            </Link>
+          <div className="mt-10">
+            <Button href="/insights" variant="ghost" showArrow>
+              Read all insights
+            </Button>
           </div>
         </div>
       </section>
 
-      <section className="px-8 py-24">
-        <div className="mx-auto flex max-w-[720px] flex-col items-center gap-6 rounded-[16px] border border-[var(--gold2)] bg-[var(--card)] p-12 text-center">
-          <h2 className="text-[clamp(24px,3.5vw,36px)] font-extrabold leading-tight tracking-[-1px] text-white">
-            Speak Directly With Dr R Gopalan
+      <section className="bg-[var(--ink-band)] px-6 py-24 lg:px-10">
+        <div className="mx-auto flex max-w-[1240px] flex-col items-start gap-6">
+          <SectionTag inverse>Speak to an Expert</SectionTag>
+          <h2 className="max-w-[560px] font-[family-name:var(--font-heading)] text-[clamp(28px,4vw,44px)] font-medium leading-[1.15] tracking-[-0.5px] text-[var(--ink-band-text)]">
+            Speak directly with Dr R Gopalan.
           </h2>
-          <p className="max-w-[480px] text-[14px] font-light leading-[1.7] text-[var(--text2)]">
+          <p className="max-w-[480px] text-[15px] font-light leading-[1.7] text-[var(--ink-band-text2)]">
             INAE Fellow. PhD IIT Madras. 35+ years. 200+ publications. One of India&apos;s foremost
             authorities on rare-earth permanent magnets.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center rounded-[6px] bg-[linear-gradient(135deg,#3a6fff,#00b8ff)] px-[22px] py-[13px] font-[family-name:var(--font-heading)] text-[12px] font-bold uppercase tracking-[0.06em] text-white transition-all duration-200 hover:-translate-y-0.5"
+            className="mt-2 inline-flex items-center justify-center rounded-[4px] bg-[var(--accent)] px-6 py-[13px] text-[13px] font-semibold text-white transition-colors duration-200 hover:bg-[var(--accent-dark)]"
           >
             Book a Consultation
           </Link>

@@ -46,19 +46,16 @@ export default function MetricBlock({ metric, delay = 0 }: MetricBlockProps) {
     metric.decimals !== undefined ? display.toFixed(metric.decimals) : Math.round(display).toString();
 
   return (
-    <div
-      ref={ref}
-      className="flex flex-col gap-2 bg-[rgba(7,9,26,0.92)] px-5 py-[18px] backdrop-blur-[8px]"
-    >
-      <span className="font-[family-name:var(--font-mono)] text-[8.5px] uppercase tracking-[0.15em] text-[var(--metric-label)]">
-        {metric.label}
-      </span>
-      <span className="font-[family-name:var(--font-heading)] text-2xl font-extrabold tracking-[-0.8px] text-[var(--metric-value)]">
+    <div ref={ref} className="flex flex-col gap-1.5 py-4 sm:px-6 sm:py-0">
+      <span className="font-[family-name:var(--font-heading)] text-[30px] font-medium tracking-[-0.5px] text-[var(--ink)]">
         {metric.prefix}
         {formatted}
         {metric.suffix}
       </span>
-      <span className="text-[10.5px] text-[var(--metric-sub)]">{metric.sub}</span>
+      <span className="text-[11px] uppercase tracking-[0.08em] text-[var(--text2)]">
+        {metric.label}
+      </span>
+      <span className="text-[12px] text-[var(--accent)]">{metric.sub}</span>
     </div>
   );
 }
