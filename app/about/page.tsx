@@ -21,7 +21,7 @@ export default function AboutPage() {
         <SectionHeader tag="About" title="The intelligence layer for strategic materials" />
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
           <div>
-            <div className="rv flex flex-col gap-[22px] text-[18px] font-light leading-[1.75] text-[var(--mute)]">
+            <div className="rv flex flex-col gap-[22px] text-[19.5px] font-light leading-[1.75] text-[var(--mute)]">
               <p>
                 Twin Pole Partners was founded on a single conviction: that the future of industrial
                 civilisation is gated by access to advanced magnetic materials — and that most

@@ -41,7 +41,7 @@ export default function HomePage() {
                 <span className="mono pt-[3px] text-[var(--nd)]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="text-[17px] font-light leading-[1.6] text-[var(--mute)]">{signal}</p>
+                <p className="text-[18.5px] font-light leading-[1.6] text-[var(--mute)]">{signal}</p>
               </div>
             ))}
           </div>
@@ -136,13 +136,13 @@ export default function HomePage() {
             <h2 className="display max-w-[15ch] text-[clamp(30px,3.8vw,50px)]">
               Speak directly with Dr R Gopalan.
             </h2>
-            <p className="mt-6 max-w-[48ch] text-[17.5px] font-light leading-[1.7] text-[var(--mute)]">
+            <p className="mt-6 max-w-[48ch] text-[19px] font-light leading-[1.7] text-[var(--mute)]">
               INAE Fellow. PhD IIT Madras. 35+ years across DRDO, NIMS Japan and ARCI. 200+
               publications, 14 patents, and 22 years on national mission programmes.
             </p>
             <Link
               href="/contact"
-              className="mt-10 inline-flex items-center gap-2 rounded-[2px] bg-[var(--nd)] px-6 py-[14px] text-[15px] font-semibold text-[var(--void)] transition-colors duration-200 hover:bg-[var(--nd-hi)]"
+              className="mt-10 inline-flex items-center gap-2 rounded-[2px] bg-[var(--nd)] px-6 py-[14px] text-[16.5px] font-semibold text-[var(--void)] transition-colors duration-200 hover:bg-[var(--nd-hi)]"
             >
               Book a consultation
               <ArrowRight className="h-[15px] w-[15px]" />

@@ -118,7 +118,7 @@ export default function NewsTicker() {
               <>
                 <b className="font-normal text-[var(--nd)]">{h.category}</b>
                 <span className="mx-2.5 text-[var(--dim)]">/</span>
-                <span className="text-[14px] normal-case tracking-normal text-[var(--bone)] group-hover:text-[var(--nd-hi)]">
+                <span className="text-[16px] normal-case tracking-normal text-[var(--bone)] group-hover:text-[var(--nd-hi)]">
                   {h.title}
                 </span>
                 <span className="ml-3 text-[var(--dim)]">— {h.source}</span>

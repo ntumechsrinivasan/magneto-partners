@@ -78,7 +78,7 @@ export default function MetricBlock({ metric, delay = 0, index = 0 }: MetricBloc
         {formatted}
         {metric.suffix}
       </span>
-      <span className="text-[15px] text-[var(--mute)]">
+      <span className="text-[16.5px] text-[var(--mute)]">
         {metric.sub}
       </span>
     </div>

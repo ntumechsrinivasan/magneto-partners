@@ -52,7 +52,7 @@ const ChatWindow = forwardRef<ChatWindowHandle>(function ChatWindow(_props, ref)
           <Magnet className="h-4 w-4" strokeWidth={1.5} />
         </span>
         <div>
-          <div className="text-[15.5px] font-semibold">Twin Pole AI Advisor</div>
+          <div className="text-[17px] font-semibold">Twin Pole AI Advisor</div>
           <div className="mono text-[var(--flux)]">● Online · industrial intelligence model</div>
         </div>
       </div>
@@ -84,7 +84,7 @@ const ChatWindow = forwardRef<ChatWindowHandle>(function ChatWindow(_props, ref)
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask about grades, supply chains, recycling…"
           aria-label="Message"
-          className="flex-1 rounded-[2px] border border-[var(--line)] bg-[var(--void)] px-[15px] py-[13px] text-[15px] text-[var(--bone)] transition-colors focus:border-[var(--nd)]"
+          className="flex-1 rounded-[2px] border border-[var(--line)] bg-[var(--void)] px-[15px] py-[13px] text-[16.5px] text-[var(--bone)] transition-colors focus:border-[var(--nd)]"
         />
         <button
           type="submit"

@@ -8,8 +8,11 @@
   --line: rgba(138, 160, 196, 0.14);
   --line2: rgba(138, 160, 196, 0.3);
   --bone: #e8ecf4;
-  --mute: #7b879c;
-  --dim: #4a5569;
+  /* Secondary and tertiary text. --dim previously sat at 2.59:1 on the
+     void ground, under any readable threshold; both now clear 4.5:1
+     against the void and the panel. */
+  --mute: #9aa6bd;
+  --dim: #77839a;
 
   /* Brand violet. #5A18FE is the core mark colour and holds on light
      surfaces; on the graphite ground it only reaches ~1.7:1, so anything
@@ -44,7 +47,7 @@ body {
   font-family: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
   /* Base size drives anything not given an explicit size. The site reads at
      arm's length on desktop, so it sits above the 16px browser default. */
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -73,8 +76,8 @@ h3 {
   font-family: var(--font-jetbrains), ui-monospace, Menlo, monospace;
   /* Uppercase mono is the site's label voice. Tracking is wide, so it needs
      more size than lowercase body text to stay comfortably legible. */
-  font-size: 12.5px;
-  letter-spacing: 0.13em;
+  font-size: 13.5px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -97,7 +100,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13.5px;
+  font-size: 14.5px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;

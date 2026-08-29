@@ -47,12 +47,12 @@ export default function ServicesPage() {
                   key={p.symbol}
                   className="rv grid grid-cols-[76px_1fr] gap-6 border-t border-[var(--line)] py-[22px] last:border-b"
                 >
-                  <div className="pt-0.5 font-[family-name:var(--font-jetbrains)] text-[19px] text-[var(--nd)]">
+                  <div className="pt-0.5 font-[family-name:var(--font-jetbrains)] text-[20.5px] text-[var(--nd)]">
                     {p.symbol}
                   </div>
                   <div>
-                    <h3 className="mb-1.5 text-[17px] font-semibold">{p.name}</h3>
-                    <p className="text-[15.5px] font-light leading-[1.65] text-[var(--mute)]">
+                    <h3 className="mb-1.5 text-[18.5px] font-semibold">{p.name}</h3>
+                    <p className="text-[17px] font-light leading-[1.65] text-[var(--mute)]">
                       {p.description}
                     </p>
                   </div>

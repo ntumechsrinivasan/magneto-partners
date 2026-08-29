@@ -26,14 +26,14 @@ export default function AdvisorPage() {
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="rv flex flex-col">
             <div className="border border-[var(--line)] p-[26px]">
-              <h3 className="mb-[18px] text-[17px] font-semibold">Capabilities</h3>
+              <h3 className="mb-[18px] text-[18.5px] font-semibold">Capabilities</h3>
               <ul className="flex flex-col">
                 {ADVISOR_CAPABILITIES.map((c, i) => (
                   <li
                     key={c}
-                    className="grid grid-cols-[30px_1fr] gap-1 border-t border-[var(--line)] py-[9px] text-[15px] font-light text-[var(--mute)] first:border-t-0 first:pt-0"
+                    className="grid grid-cols-[30px_1fr] gap-1 border-t border-[var(--line)] py-[9px] text-[16.5px] font-light text-[var(--mute)] first:border-t-0 first:pt-0"
                   >
-                    <i className="pt-[3px] font-[family-name:var(--font-jetbrains)] text-[11.5px] not-italic text-[var(--nd)]">
+                    <i className="pt-[3px] font-[family-name:var(--font-jetbrains)] text-[13px] not-italic text-[var(--nd)]">
                       {String(i + 1).padStart(2, "0")}
                     </i>
                     <span>{c}</span>
@@ -61,19 +61,19 @@ export default function AdvisorPage() {
                   <GraduationCap className="h-[18px] w-[18px]" strokeWidth={1.5} />
                 </span>
                 <div>
-                  <h3 className="text-[17px] font-semibold">Dr R Gopalan</h3>
+                  <h3 className="text-[18.5px] font-semibold">Dr R Gopalan</h3>
                   <div className="mono text-[var(--nd)]">
                     INAE Fellow · PhD IIT Madras · h-index 31
                   </div>
                 </div>
               </div>
-              <p className="mt-4 text-[15px] font-light leading-[1.65] text-[var(--mute)]">
+              <p className="mt-4 text-[16.5px] font-light leading-[1.65] text-[var(--mute)]">
                 Technology Advisor &amp; INAE Chair Professor, ARCI. For complex strategic
                 challenges, book directly with Dr Gopalan.
               </p>
               <Link
                 href="/contact"
-                className="mt-5 inline-flex items-center gap-2 border-b border-[var(--line2)] pb-1 text-[15px] font-medium text-[var(--bone)] transition-colors hover:border-[var(--nd)] hover:text-[var(--nd)]"
+                className="mt-5 inline-flex items-center gap-2 border-b border-[var(--line2)] pb-1 text-[16.5px] font-medium text-[var(--bone)] transition-colors hover:border-[var(--nd)] hover:text-[var(--nd)]"
               >
                 Book with Dr Gopalan
                 <ArrowRight className="h-[15px] w-[15px]" />

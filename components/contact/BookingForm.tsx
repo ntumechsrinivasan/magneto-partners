@@ -20,7 +20,7 @@ const bookingSchema = z.object({
 type BookingFormValues = z.infer<typeof bookingSchema>;
 
 const field =
-  "w-full rounded-[2px] border border-[var(--line)] bg-[var(--void)] px-[15px] py-[13px] text-[15.5px] text-[var(--bone)] transition-colors focus:border-[var(--nd)]";
+  "w-full rounded-[2px] border border-[var(--line)] bg-[var(--void)] px-[15px] py-[13px] text-[17px] text-[var(--bone)] transition-colors focus:border-[var(--nd)]";
 
 export default function BookingForm({ selectedPlanId }: { selectedPlanId: string | null }) {
   const [submitted, setSubmitted] = useState(false);
@@ -43,12 +43,12 @@ export default function BookingForm({ selectedPlanId }: { selectedPlanId: string
     setTimeout(() => setSubmitted(false), 4500);
   };
 
-  const err = (m?: string) => m && <p className="mt-[7px] text-[13px] text-[var(--crit)]">{m}</p>;
+  const err = (m?: string) => m && <p className="mt-[7px] text-[15px] text-[var(--crit)]">{m}</p>;
 
   return (
     <div className="rv border border-[var(--line)] p-9">
       {tier && (
-        <div className="mb-[26px] border-l-2 border-[var(--nd)] bg-[var(--nd-soft)] px-[18px] py-3.5 text-[15px] font-light text-[var(--mute)]">
+        <div className="mb-[26px] border-l-2 border-[var(--nd)] bg-[var(--nd-soft)] px-[18px] py-3.5 text-[16.5px] font-light text-[var(--mute)]">
           Selected: <b className="font-semibold text-[var(--bone)]">{tier.name}</b> — you will
           receive a calendar link and confirmation within two business hours.
           {!hasScheduler && (
@@ -148,7 +148,7 @@ export default function BookingForm({ selectedPlanId }: { selectedPlanId: string
 
         <button
           type="submit"
-          className={`w-full rounded-[2px] p-[17px] text-[15.5px] font-semibold text-[var(--void)] transition-colors duration-300 ${
+          className={`w-full rounded-[2px] p-[17px] text-[17px] font-semibold text-[var(--void)] transition-colors duration-300 ${
             submitted ? "bg-[var(--flux)]" : "bg-[var(--nd)] hover:bg-[var(--nd-hi)]"
           }`}
         >

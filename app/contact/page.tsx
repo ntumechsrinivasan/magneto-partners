@@ -51,14 +51,14 @@ export default function ContactPage() {
 
         <div className="rv flex flex-col items-start gap-4 border border-[var(--line)] p-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h3 className="text-[19px] font-semibold">Not sure which to book?</h3>
-            <p className="mt-1.5 text-[16px] font-light leading-[1.6] text-[var(--mute)]">
+            <h3 className="text-[20.5px] font-semibold">Not sure which to book?</h3>
+            <p className="mt-1.5 text-[17.5px] font-light leading-[1.6] text-[var(--mute)]">
               Write to us and we will point you at the right one — or tell you if you do not need us.
             </p>
           </div>
           <a
             href={`mailto:${SITE.email}`}
-            className="inline-flex shrink-0 items-center gap-2.5 border-b border-[var(--line2)] pb-1 text-[16px] font-medium text-[var(--bone)] transition-colors hover:border-[var(--nd)] hover:text-[var(--nd)]"
+            className="inline-flex shrink-0 items-center gap-2.5 border-b border-[var(--line2)] pb-1 text-[17.5px] font-medium text-[var(--bone)] transition-colors hover:border-[var(--nd)] hover:text-[var(--nd)]"
           >
             <Mail className="h-[17px] w-[17px]" strokeWidth={1.6} />
             {SITE.email}
