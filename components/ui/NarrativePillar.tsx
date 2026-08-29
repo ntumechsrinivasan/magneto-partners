@@ -1,30 +1,15 @@
-"use client";
+import type { NarrativePillar as PillarData } from "@/lib/types";
 
-import { motion } from "framer-motion";
-import type { NarrativePillar as NarrativePillarData } from "@/lib/types";
-
-export default function NarrativePillar({
-  pillar,
-  index,
-}: {
-  pillar: NarrativePillarData;
-  index: number;
-}) {
+export default function NarrativePillar({ pillar, index = 0 }: { pillar: PillarData; index?: number }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="flex flex-col gap-4"
+    <div
+      className={`rv flex flex-col gap-4 border-t border-[var(--line)] py-7 sm:border-l sm:border-t-0 sm:px-9 sm:py-0 ${
+        index === 0 ? "sm:border-l-0 sm:pl-0" : ""
+      }`}
     >
-      <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
-        {pillar.eyebrow}
-      </span>
-      <h3 className="font-[family-name:var(--font-heading)] text-[24px] font-medium leading-[1.25] tracking-[-0.3px] text-[var(--ink)]">
-        {pillar.headline}
-      </h3>
-      <p className="text-[14px] font-light leading-[1.7] text-[var(--text2)]">{pillar.copy}</p>
-    </motion.div>
+      <span className="mono text-[var(--nd)]">{pillar.eyebrow}</span>
+      <h3 className="display-tight text-[22px] leading-[1.22]">{pillar.headline}</h3>
+      <p className="text-[14px] font-light leading-[1.7] text-[var(--mute)]">{pillar.copy}</p>
+    </div>
   );
 }

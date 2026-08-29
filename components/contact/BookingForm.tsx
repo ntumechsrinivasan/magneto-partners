@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CONSULTATION_TIERS, TIMEZONES } from "@/lib/constants";
+import { CONSULTATION_TIERS, TIMEZONES, SCHEDULING } from "@/lib/constants";
 
 const bookingSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -19,31 +19,23 @@ const bookingSchema = z.object({
 
 type BookingFormValues = z.infer<typeof bookingSchema>;
 
-const inputClass =
-  "w-full rounded-[4px] border border-[var(--border)] bg-[var(--bg-alt)] px-4 py-3 text-[13px] text-[var(--text)] transition-colors focus:border-[var(--accent)]";
-const labelClass = "mb-1.5 block text-[11.5px] font-medium text-[var(--text2)]";
+const field =
+  "w-full rounded-[2px] border border-[var(--line)] bg-[var(--void)] px-[15px] py-[13px] text-[13.5px] text-[var(--bone)] transition-colors focus:border-[var(--nd)]";
 
-interface BookingFormProps {
-  selectedPlanId: string | null;
-}
-
-export default function BookingForm({ selectedPlanId }: BookingFormProps) {
+export default function BookingForm({ selectedPlanId }: { selectedPlanId: string | null }) {
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<BookingFormValues>({
-    resolver: zodResolver(bookingSchema),
-  });
+  } = useForm<BookingFormValues>({ resolver: zodResolver(bookingSchema) });
 
-  const selectedTier = CONSULTATION_TIERS.find((t) => t.id === selectedPlanId);
+  const tier = CONSULTATION_TIERS.find((t) => t.id === selectedPlanId);
+  const hasScheduler = Boolean(selectedPlanId && SCHEDULING[selectedPlanId]);
 
   useEffect(() => {
-    if (selectedPlanId) {
-      setValue("consultationType", selectedPlanId);
-    }
+    if (selectedPlanId) setValue("consultationType", selectedPlanId);
   }, [selectedPlanId, setValue]);
 
   const onSubmit = () => {
@@ -51,108 +43,116 @@ export default function BookingForm({ selectedPlanId }: BookingFormProps) {
     setTimeout(() => setSubmitted(false), 4500);
   };
 
+  const err = (m?: string) => m && <p className="mt-[7px] text-[11.5px] text-[var(--crit)]">{m}</p>;
+
   return (
-    <div className="border border-[var(--border)] bg-[var(--card)] p-8">
-      {selectedTier && (
-        <div className="mb-6 border border-[var(--accent-soft2)] bg-[var(--accent-soft)] px-4 py-3 text-[12.5px] text-[var(--text2)]">
-          Selected: <strong className="text-[var(--ink)]">{selectedTier.name}</strong> — You will
-          receive a calendar link and confirmation within 2 business hours.
+    <div className="rv border border-[var(--line)] p-9">
+      {tier && (
+        <div className="mb-[26px] border-l-2 border-[var(--nd)] bg-[var(--nd-soft)] px-[18px] py-3.5 text-[13px] font-light text-[var(--mute)]">
+          Selected: <b className="font-semibold text-[var(--bone)]">{tier.name}</b> — you will
+          receive a calendar link and confirmation within two business hours.
+          {!hasScheduler && (
+            <span className="mono mt-2 block text-[var(--dim)]">
+              Live scheduling not yet connected — this tier uses the request form
+            </span>
+          )}
         </div>
       )}
 
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-[22px]">
+        <div className="grid grid-cols-1 gap-[22px] sm:grid-cols-2">
           <div>
-            <label className={labelClass}>First Name</label>
-            <input {...register("firstName")} className={inputClass} />
-            {errors.firstName && (
-              <p className="mt-1 text-[11px] text-[var(--error)]">{errors.firstName.message}</p>
-            )}
+            <label className="mono mb-2 block text-[var(--dim)]" htmlFor="fn">
+              First name
+            </label>
+            <input id="fn" {...register("firstName")} className={field} />
+            {err(errors.firstName?.message)}
           </div>
           <div>
-            <label className={labelClass}>Last Name</label>
-            <input {...register("lastName")} className={inputClass} />
-            {errors.lastName && (
-              <p className="mt-1 text-[11px] text-[var(--error)]">{errors.lastName.message}</p>
-            )}
-          </div>
-        </div>
-
-        <div>
-          <label className={labelClass}>Organisation</label>
-          <input {...register("organisation")} className={inputClass} />
-          {errors.organisation && (
-            <p className="mt-1 text-[11px] text-[var(--error)]">{errors.organisation.message}</p>
-          )}
-        </div>
-
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-          <div>
-            <label className={labelClass}>Email</label>
-            <input type="email" {...register("email")} className={inputClass} />
-            {errors.email && <p className="mt-1 text-[11px] text-[var(--error)]">{errors.email.message}</p>}
-          </div>
-          <div>
-            <label className={labelClass}>Phone</label>
-            <input type="tel" {...register("phone")} className={inputClass} />
-            {errors.phone && <p className="mt-1 text-[11px] text-[var(--error)]">{errors.phone.message}</p>}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-          <div>
-            <label className={labelClass}>Consultation Type</label>
-            <select {...register("consultationType")} className={inputClass} defaultValue="">
-              <option value="" disabled>
-                Select a consultation type
-              </option>
-              {CONSULTATION_TIERS.map((tier) => (
-                <option key={tier.id} value={tier.id}>
-                  {tier.name}
-                </option>
-              ))}
-            </select>
-            {errors.consultationType && (
-              <p className="mt-1 text-[11px] text-[var(--error)]">{errors.consultationType.message}</p>
-            )}
-          </div>
-          <div>
-            <label className={labelClass}>Preferred Timezone</label>
-            <select {...register("timezone")} className={inputClass} defaultValue="">
-              <option value="" disabled>
-                Select a timezone
-              </option>
-              {TIMEZONES.map((tz) => (
-                <option key={tz} value={tz}>
-                  {tz}
-                </option>
-              ))}
-            </select>
-            {errors.timezone && (
-              <p className="mt-1 text-[11px] text-[var(--error)]">{errors.timezone.message}</p>
-            )}
+            <label className="mono mb-2 block text-[var(--dim)]" htmlFor="ln">
+              Last name
+            </label>
+            <input id="ln" {...register("lastName")} className={field} />
+            {err(errors.lastName?.message)}
           </div>
         </div>
 
         <div>
-          <label className={labelClass}>Message</label>
+          <label className="mono mb-2 block text-[var(--dim)]" htmlFor="og">
+            Organisation
+          </label>
+          <input id="og" {...register("organisation")} className={field} />
+          {err(errors.organisation?.message)}
+        </div>
+
+        <div className="grid grid-cols-1 gap-[22px] sm:grid-cols-2">
+          <div>
+            <label className="mono mb-2 block text-[var(--dim)]" htmlFor="em">
+              Email
+            </label>
+            <input id="em" type="email" {...register("email")} className={field} />
+            {err(errors.email?.message)}
+          </div>
+          <div>
+            <label className="mono mb-2 block text-[var(--dim)]" htmlFor="ph">
+              Phone
+            </label>
+            <input id="ph" type="tel" {...register("phone")} className={field} />
+            {err(errors.phone?.message)}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-[22px] sm:grid-cols-2">
+          <div>
+            <label className="mono mb-2 block text-[var(--dim)]" htmlFor="ct">
+              Consultation type
+            </label>
+            <select id="ct" {...register("consultationType")} className={field} defaultValue="">
+              <option value="">Select…</option>
+              {CONSULTATION_TIERS.map((t) => (
+                <option key={t.id} value={t.id}>
+                  {t.name}
+                </option>
+              ))}
+            </select>
+            {err(errors.consultationType?.message)}
+          </div>
+          <div>
+            <label className="mono mb-2 block text-[var(--dim)]" htmlFor="tz">
+              Preferred timezone
+            </label>
+            <select id="tz" {...register("timezone")} className={field} defaultValue="">
+              <option value="">Select…</option>
+              {TIMEZONES.map((z) => (
+                <option key={z} value={z}>
+                  {z}
+                </option>
+              ))}
+            </select>
+            {err(errors.timezone?.message)}
+          </div>
+        </div>
+
+        <div>
+          <label className="mono mb-2 block text-[var(--dim)]" htmlFor="ms">
+            Message
+          </label>
           <textarea
+            id="ms"
             {...register("message")}
-            className={`${inputClass} min-h-[90px] resize-y`}
             placeholder="Briefly describe your challenge or objective for Dr Gopalan — the more context you provide, the more productive the session."
+            className={`${field} min-h-[104px] resize-y font-light leading-[1.6]`}
           />
-          {errors.message && (
-            <p className="mt-1 text-[11px] text-[var(--error)]">{errors.message.message}</p>
-          )}
+          {err(errors.message?.message)}
         </div>
 
         <button
           type="submit"
-          className={`w-full rounded-[4px] px-6 py-4 text-[13px] font-semibold text-white transition-colors duration-300 ${
-            submitted ? "bg-[var(--success)]" : "bg-[var(--accent)] hover:bg-[var(--accent-dark)]"
+          className={`w-full rounded-[2px] p-[17px] text-[13.5px] font-semibold text-[var(--void)] transition-colors duration-300 ${
+            submitted ? "bg-[var(--flux)]" : "bg-[var(--nd)] hover:bg-[var(--nd-hi)]"
           }`}
         >
-          {submitted ? "Booking confirmed — Dr Gopalan will be in touch ✓" : "Confirm Booking Request →"}
+          {submitted ? "Booking confirmed — Dr Gopalan will be in touch" : "Confirm booking request"}
         </button>
       </form>
     </div>

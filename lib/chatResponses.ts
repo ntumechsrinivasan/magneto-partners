@@ -67,7 +67,7 @@ Watch: Dy-free NdFeB routes via grain boundary diffusion — Dr Gopalan's team a
 
 NdPr price: 2021 peak $175/kg → 2023 trough $48/kg → 2024–25 avg $65–80/kg.
 
-Magneto models $80–120/kg through 2027 as EV acceleration resumes, with upside tail risk from export restriction escalation — China's gallium/germanium restrictions provide the policy template.
+Twin Pole models $80–120/kg through 2027 as EV acceleration resumes, with upside tail risk from export restriction escalation — China's gallium/germanium restrictions provide the policy template.
 
 India's Atmanirbhar Bharat response: Dr Gopalan's ARCI programmes directly address the national mission to build a domestic rare-earth magnet ecosystem.
 
@@ -81,7 +81,7 @@ export const DEFAULT_CHAT_RESPONSE = `Thank you for your query. The AI Advisor d
 
 Can you share more about your application, operating environment, or procurement volumes?`;
 
-export const CHAT_WELCOME_MESSAGE = `Welcome to the Magneto AI Advisor — built on the research and frameworks of Dr Raghavan Gopalan, INAE Chair Professor and one of India's foremost authorities on rare-earth permanent magnets. Ask me about magnet grades, supply chains, or recycling. For deeper strategic work, [book directly with Dr Gopalan →]`;
+export const CHAT_WELCOME_MESSAGE = `Welcome to the Twin Pole AI Advisor — built on the research and frameworks of Dr Raghavan Gopalan, INAE Chair Professor and one of India's foremost authorities on rare-earth permanent magnets. Ask me about magnet grades, supply chains, or recycling. For deeper strategic work, [book directly with Dr Gopalan →]`;
 
 export function getChatResponse(input: string): string {
   const normalized = input.toLowerCase();

@@ -46,29 +46,27 @@ const ChatWindow = forwardRef<ChatWindowHandle>(function ChatWindow(_props, ref)
   }, [messages, typing]);
 
   return (
-    <div className="flex h-[520px] flex-col overflow-hidden border border-[var(--border)] bg-[var(--card)]">
-      <div className="flex items-center gap-3 border-b border-[var(--border)] px-5 py-4">
-        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent)]">
-          <Magnet className="h-4 w-4" strokeWidth={1.75} />
-        </div>
-        <div className="flex flex-col">
-          <span className="font-[family-name:var(--font-heading)] text-[14px] font-medium text-[var(--ink)]">
-            Magneto AI Advisor
-          </span>
-          <span className="text-[11px] text-[var(--success)]">● Online · Industrial Intelligence Model</span>
+    <div className="flex h-[560px] flex-col border border-[var(--line)] bg-[var(--panel)]">
+      <div className="flex items-center gap-3.5 border-b border-[var(--line)] px-[22px] py-[18px]">
+        <span className="flex h-[34px] w-[34px] items-center justify-center rounded-full border border-[var(--nd-line)] text-[var(--nd)]">
+          <Magnet className="h-4 w-4" strokeWidth={1.5} />
+        </span>
+        <div>
+          <div className="text-[13.5px] font-semibold">Twin Pole AI Advisor</div>
+          <div className="mono text-[var(--flux)]">● Online · industrial intelligence model</div>
         </div>
       </div>
 
-      <div ref={scrollRef} className="flex flex-1 flex-col gap-3 overflow-y-auto bg-[var(--card2)] px-5 py-4">
+      <div ref={scrollRef} className="flex flex-1 flex-col gap-4 overflow-y-auto p-[22px]">
         {messages.map((message) => (
           <ChatMessage key={message.id} message={message} />
         ))}
         {typing && (
           <div className="flex justify-start">
-            <div className="flex items-center gap-1 rounded-[10px] border border-[var(--border)] bg-[var(--bg-alt)] px-4 py-3">
-              <span className="typing-dot h-1.5 w-1.5 rounded-full bg-[var(--text2)]" />
-              <span className="typing-dot h-1.5 w-1.5 rounded-full bg-[var(--text2)]" />
-              <span className="typing-dot h-1.5 w-1.5 rounded-full bg-[var(--text2)]" />
+            <div className="flex items-center gap-[5px] border border-l-2 border-[var(--line)] border-l-[var(--nd)] bg-[var(--panel2)] px-[17px] py-[15px]">
+              <i className="pip h-[5px] w-[5px] rounded-full bg-[var(--nd)]" />
+              <i className="pip h-[5px] w-[5px] rounded-full bg-[var(--nd)]" />
+              <i className="pip h-[5px] w-[5px] rounded-full bg-[var(--nd)]" />
             </div>
           </div>
         )}
@@ -79,20 +77,21 @@ const ChatWindow = forwardRef<ChatWindowHandle>(function ChatWindow(_props, ref)
           e.preventDefault();
           sendMessage(input);
         }}
-        className="flex items-center gap-2 border-t border-[var(--border)] p-4"
+        className="flex gap-2.5 border-t border-[var(--line)] p-[18px]"
       >
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask about magnet grades, supply chains, recycling..."
-          className="flex-1 rounded-[4px] border border-[var(--border)] bg-[var(--bg-alt)] px-4 py-3 text-[13px] text-[var(--text)] transition-colors focus:border-[var(--border2)]"
+          placeholder="Ask about grades, supply chains, recycling…"
+          aria-label="Message"
+          className="flex-1 rounded-[2px] border border-[var(--line)] bg-[var(--void)] px-[15px] py-[13px] text-[13px] text-[var(--bone)] transition-colors focus:border-[var(--nd)]"
         />
         <button
           type="submit"
           aria-label="Send message"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[4px] bg-[var(--accent)] text-white transition-colors hover:bg-[var(--accent-dark)]"
+          className="flex w-11 items-center justify-center rounded-[2px] bg-[var(--nd)] text-[var(--void)] transition-colors hover:bg-[var(--nd-hi)]"
         >
-          <ArrowUp className="h-4 w-4" />
+          <ArrowUp className="h-[15px] w-[15px]" />
         </button>
       </form>
     </div>

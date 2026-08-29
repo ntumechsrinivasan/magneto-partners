@@ -1,48 +1,20 @@
-"use client";
-
-import { motion } from "framer-motion";
-import SectionTag from "./SectionTag";
-
 interface SectionHeaderProps {
   tag: string;
   title: string;
   description?: string;
-  align?: "center" | "left";
-  inverse?: boolean;
 }
 
-export default function SectionHeader({
-  tag,
-  title,
-  description,
-  align = "center",
-  inverse = false,
-}: SectionHeaderProps) {
+/** Mono index label in the margin, technical-drawing style. */
+export default function SectionHeader({ tag, title, description }: SectionHeaderProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className={`mb-16 flex max-w-2xl flex-col gap-4 ${align === "center" ? "mx-auto items-center text-center" : "items-start text-left"}`}
-    >
-      <SectionTag inverse={inverse}>{tag}</SectionTag>
-      <h2
-        className={`text-[clamp(28px,4vw,44px)] font-medium leading-[1.12] tracking-[-0.5px] ${
-          inverse ? "text-[var(--ink-band-text)]" : "text-[var(--ink)]"
-        }`}
-      >
-        {title}
-      </h2>
-      {description && (
-        <p
-          className={`text-[16px] font-light leading-[1.7] ${
-            inverse ? "text-[var(--ink-band-text2)]" : "text-[var(--text2)]"
-          }`}
-        >
-          {description}
-        </p>
-      )}
-    </motion.div>
+    <div className="rv mb-[72px] grid grid-cols-1 gap-6 lg:grid-cols-[180px_1fr] lg:gap-10">
+      <div className="mono pt-0 text-[var(--nd)] lg:pt-2.5">{tag}</div>
+      <div className="flex max-w-[640px] flex-col gap-5">
+        <h2 className="display text-[clamp(30px,3.6vw,46px)]">{title}</h2>
+        {description && (
+          <p className="text-[16px] font-light leading-[1.65] text-[var(--mute)]">{description}</p>
+        )}
+      </div>
+    </div>
   );
 }

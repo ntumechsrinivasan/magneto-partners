@@ -1,35 +1,39 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Archivo, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Duotone from "@/components/ui/Duotone";
+import { SITE } from "@/lib/constants";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const archivo = Archivo({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-fraunces",
+  axes: ["wdth"],
+  variable: "--font-archivo",
   display: "swap",
 });
 
-const inter = Inter({
+const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
+  weight: ["400", "500"],
+  variable: "--font-jetbrains",
   display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE.url),
   title: {
-    template: "%s | Magneto Partners",
-    default: "Magneto Partners — Strategic Magnet Intelligence",
+    template: `%s | ${SITE.name}`,
+    default: `${SITE.name} — Strategic Magnet Intelligence`,
   },
-  description:
-    "Premium strategic consulting for rare-earth magnets, EV supply chains, and advanced manufacturing intelligence.",
+  description: SITE.description,
   openGraph: {
-    siteName: "Magneto Partners",
+    siteName: SITE.name,
     type: "website",
     locale: "en_GB",
+    url: SITE.url,
+    title: `${SITE.name} — Strategic Magnet Intelligence`,
+    description: SITE.description,
   },
   robots: { index: true, follow: true },
 };
@@ -37,7 +41,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${fraunces.variable} ${inter.variable} antialiased`}>
+      <body className={`${archivo.variable} ${jetbrains.variable} antialiased`}>
+        <Duotone />
         <Navbar />
         {children}
         <Footer />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import SectionHeader from "@/components/ui/SectionHeader";
 import InsightCard from "@/components/ui/InsightCard";
+import Reveal from "@/components/ui/Reveal";
 import { INSIGHTS } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -11,12 +12,13 @@ export const metadata: Metadata = {
 
 export default function InsightsPage() {
   return (
-    <main className="px-6 py-24 lg:px-10">
-      <div className="mx-auto max-w-[1240px]">
-        <SectionHeader tag="Insights" title="Industrial intelligence & market research" align="left" />
-        <div className="grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2">
-          {INSIGHTS.map((insight, i) => (
-            <InsightCard key={insight.title} insight={insight} index={i} />
+    <main className="px-6 py-32 lg:px-10">
+      <Reveal />
+      <div className="mx-auto max-w-[1280px]">
+        <SectionHeader tag="Insights" title="Industrial intelligence & market research" />
+        <div className="flex flex-col">
+          {INSIGHTS.map((a) => (
+            <InsightCard key={a.title} insight={a} />
           ))}
         </div>
       </div>

@@ -2,34 +2,40 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import LogoIcon from "@/components/ui/LogoIcon";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS, SITE } from "@/lib/constants";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[rgba(247,244,238,0.92)] backdrop-blur-md">
-      <div className="mx-auto flex h-[76px] max-w-[1240px] items-center justify-between px-6 lg:px-10">
-        <Link href="/" className="flex items-center gap-2.5">
-          <LogoIcon />
-          <span className="font-[family-name:var(--font-heading)] text-[17px] font-semibold tracking-[-0.3px] text-[var(--ink)]">
-            Magneto<span className="text-[var(--accent)]">.</span>
-          </span>
+    <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[rgba(10,13,18,0.82)] backdrop-blur-[14px]">
+      <div className="mx-auto flex h-[68px] max-w-[1280px] items-center justify-between gap-6 px-6 lg:px-10">
+        <Link href="/" aria-label={`${SITE.name} home`} className="flex items-center">
+          <Image
+            src="/brand/lockup-dark.png"
+            alt={SITE.name}
+            width={1000}
+            height={215}
+            priority
+            className="h-[28px] w-auto lg:h-[34px]"
+          />
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-[30px] lg:flex">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-[13.5px] font-medium transition-colors duration-200 ${
-                  active ? "text-[var(--ink)]" : "text-[var(--text2)] hover:text-[var(--ink)]"
+                className={`mono relative transition-colors duration-200 ${
+                  active
+                    ? "text-[var(--bone)] after:absolute after:inset-x-0 after:-bottom-6 after:h-[2px] after:bg-[var(--nd)]"
+                    : "text-[var(--mute)] hover:text-[var(--bone)]"
                 }`}
               >
                 {link.label}
@@ -40,7 +46,7 @@ export default function Navbar() {
 
         <Link
           href="/contact"
-          className="hidden items-center justify-center rounded-[4px] bg-[var(--accent)] px-5 py-[10px] text-[12.5px] font-semibold text-white transition-colors duration-200 hover:bg-[var(--accent-dark)] lg:inline-flex"
+          className="mono hidden rounded-[2px] bg-[var(--nd)] px-[18px] py-[10px] font-semibold text-[var(--void)] transition-colors duration-200 hover:bg-[var(--nd-hi)] lg:inline-flex"
         >
           Speak to an Expert
         </Link>
@@ -48,22 +54,23 @@ export default function Navbar() {
         <button
           type="button"
           aria-label="Toggle menu"
+          aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="text-[var(--ink)] lg:hidden"
+          className="text-[var(--bone)] lg:hidden"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
 
       {open && (
-        <div className="absolute inset-x-0 top-[76px] flex flex-col gap-1 border-b border-[var(--border)] bg-[var(--bg-alt)] p-5 lg:hidden">
+        <div className="flex flex-col border-b border-[var(--line)] bg-[var(--panel)] px-6 pb-6 pt-4 lg:hidden">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className={`rounded-[4px] px-3 py-3 text-[15px] font-medium ${
-                pathname === link.href ? "text-[var(--accent)]" : "text-[var(--text2)]"
+              className={`mono border-t border-[var(--line)] py-[13px] first:border-t-0 ${
+                pathname === link.href ? "text-[var(--nd)]" : "text-[var(--mute)]"
               }`}
             >
               {link.label}
@@ -72,7 +79,7 @@ export default function Navbar() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-2 rounded-[4px] bg-[var(--accent)] px-5 py-3 text-center text-[13px] font-semibold text-white"
+            className="mono mt-4 rounded-[2px] bg-[var(--nd)] px-5 py-3 text-center font-semibold text-[var(--void)]"
           >
             Speak to an Expert
           </Link>

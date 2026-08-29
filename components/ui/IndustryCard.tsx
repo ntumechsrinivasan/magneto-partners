@@ -1,37 +1,24 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Icon from "./Icon";
 import type { Industry } from "@/lib/types";
 
-export default function IndustryCard({ industry, index }: { industry: Industry; index: number }) {
+export default function IndustryCard({ industry }: { industry: Industry; index?: number }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: (index % 4) * 0.07 }}
-      className="group flex flex-col gap-3 border border-[var(--border)] bg-[var(--card)] p-6 transition-all duration-300 hover:border-[var(--border2)] hover:shadow-[0_12px_28px_rgba(23,20,15,0.06)]"
-    >
-      <Icon name={industry.icon} className="h-6 w-6 text-[var(--accent)]" strokeWidth={1.6} />
-      <h3 className="font-[family-name:var(--font-heading)] text-[16px] font-medium text-[var(--ink)]">
-        {industry.name}
-      </h3>
-      <span className="text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--accent)]">
+    <article className="rv group flex flex-col gap-3 border-b border-r border-[var(--line)] px-7 pb-9 pt-8 transition-colors duration-300 hover:bg-[var(--panel)]">
+      <Icon name={industry.icon} className="h-[18px] w-[18px] text-[var(--nd)]" strokeWidth={1.5} />
+      <h3 className="display-tight text-[17px]">{industry.name}</h3>
+      <span className="num font-[family-name:var(--font-jetbrains)] text-[12px] tracking-[0.04em] text-[var(--flux)]">
         {industry.cagr}
       </span>
-      <div className="flex h-7 items-end gap-[3px]">
+      <div className="flex h-[34px] items-end gap-[3px]">
         {industry.bars.map((bar, i) => (
-          <div
+          <span
             key={i}
-            className="flex-1 rounded-t-[1px] bg-[var(--accent)] opacity-30 transition-opacity duration-500 group-hover:opacity-90"
+            className="flex-1 bg-[var(--nd)] opacity-[0.28] transition-opacity duration-500 group-hover:opacity-[0.85]"
             style={{ height: `${bar}%` }}
           />
         ))}
       </div>
-      <p className="text-[12px] font-light leading-[1.6] text-[var(--text2)]">
-        {industry.description}
-      </p>
-    </motion.div>
+      <p className="text-[13px] font-light leading-[1.65] text-[var(--mute)]">{industry.description}</p>
+    </article>
   );
 }

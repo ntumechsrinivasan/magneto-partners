@@ -5,23 +5,18 @@ import type { ReactNode } from "react";
 interface ButtonProps {
   href?: string;
   children: ReactNode;
-  variant?: "primary" | "ghost" | "ghost-inverse";
+  variant?: "primary" | "ghost";
   type?: "button" | "submit";
   onClick?: () => void;
   className?: string;
-  fullWidth?: boolean;
   showArrow?: boolean;
 }
 
-const base = "inline-flex items-center justify-center gap-1.5 transition-all duration-200 cursor-pointer";
-
-const variants: Record<string, string> = {
+const styles: Record<string, string> = {
   primary:
-    "rounded-[4px] bg-[var(--accent)] text-white text-[13px] font-semibold px-6 py-[13px] hover:bg-[var(--accent-dark)] hover:-translate-y-px",
+    "rounded-[2px] bg-[var(--nd)] px-6 py-[14px] text-[13px] font-semibold text-[var(--void)] hover:bg-[var(--nd-hi)]",
   ghost:
-    "text-[var(--ink)] text-[13.5px] font-medium border-b border-[var(--border2)] pb-0.5 hover:border-[var(--accent)] hover:text-[var(--accent)]",
-  "ghost-inverse":
-    "text-[var(--ink-band-text)] text-[13.5px] font-medium border-b border-[rgba(239,233,221,0.3)] pb-0.5 hover:border-[var(--ink-band-text)]",
+    "border-b border-[var(--line2)] pb-1 text-[13.5px] font-medium text-[var(--bone)] hover:border-[var(--nd)] hover:text-[var(--nd)]",
 };
 
 export default function Button({
@@ -31,11 +26,10 @@ export default function Button({
   type = "button",
   onClick,
   className = "",
-  fullWidth = false,
   showArrow = false,
 }: ButtonProps) {
-  const classes = `${base} ${variants[variant]} ${fullWidth ? "w-full" : ""} ${className}`;
-  const content = (
+  const cls = `inline-flex items-center justify-center gap-2 transition-colors duration-200 cursor-pointer ${styles[variant]} ${className}`;
+  const body = (
     <>
       {children}
       {showArrow && <ArrowRight className="h-[15px] w-[15px]" />}
@@ -44,15 +38,14 @@ export default function Button({
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
-        {content}
+      <Link href={href} className={cls}>
+        {body}
       </Link>
     );
   }
-
   return (
-    <button type={type} onClick={onClick} className={classes}>
-      {content}
+    <button type={type} onClick={onClick} className={cls}>
+      {body}
     </button>
   );
 }

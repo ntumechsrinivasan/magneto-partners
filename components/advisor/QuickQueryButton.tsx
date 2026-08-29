@@ -9,7 +9,7 @@ export default function QuickQueryButton({
     <button
       type="button"
       onClick={onClick}
-      className="rounded-full border border-[var(--border2)] bg-[var(--bg-alt)] px-3.5 py-[7px] text-[12px] text-[var(--text2)] transition-colors duration-200 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+      className="rounded-[2px] border border-[var(--line2)] px-[13px] py-2 text-[12px] text-[var(--mute)] transition-colors duration-200 hover:border-[var(--nd)] hover:text-[var(--nd)]"
     >
       {label}
     </button>

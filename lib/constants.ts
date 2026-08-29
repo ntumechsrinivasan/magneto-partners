@@ -207,7 +207,7 @@ export const INSIGHTS: Insight[] = [
       "The Rare-Earth Standoff: How China's Export Controls Are Reshaping Global Magnet Supply Chains",
     excerpt:
       "As Beijing tightens controls on gallium, germanium, and heavy rare earths, the fragility of Western magnet dependency has come into sharp relief. This deep-dive examines the regulatory architecture, corporate exposure by sector, and the realistic timeline for supply-chain diversification.",
-    source: "MAGNETO RESEARCH DESK",
+    source: "TWIN POLE RESEARCH DESK",
     date: "JAN 2025",
     readTime: "14 MIN READ",
   },
@@ -216,7 +216,7 @@ export const INSIGHTS: Insight[] = [
     title: "IPM vs. Induction: The Motor Architecture Decision Reshaping EV Procurement",
     excerpt:
       "IPM motors dominate efficiency benchmarks, but induction alternatives are gaining ground among OEMs hedging supply-chain risk. We model the cost and performance crossover through 2028.",
-    source: "MAGNETO ANALYTICS",
+    source: "TWIN POLE ANALYTICS",
     date: "DEC 2024",
     readTime: "9 MIN READ",
   },
@@ -225,7 +225,7 @@ export const INSIGHTS: Insight[] = [
     title: "Building the Circular Magnet Economy: Investment Landscape and Techno-Economic Realities",
     excerpt:
       "A rigorous assessment of HPMS, short-loop recycling, and hydrometallurgical routes — comparing CapEx, recovery rates, and regulatory tailwinds across EU, US, and India.",
-    source: "MAGNETO RESEARCH DESK",
+    source: "TWIN POLE RESEARCH DESK",
     date: "NOV 2024",
     readTime: "11 MIN READ",
   },
@@ -234,7 +234,7 @@ export const INSIGHTS: Insight[] = [
     title: "How AI Is Transforming Magnet Quality Inspection and Predictive Sourcing",
     excerpt:
       "Computer vision, spectroscopic AI, and LLM-driven procurement systems are changing how tier-1 manufacturers manage magnet intake quality and supplier intelligence.",
-    source: "MAGNETO LABS",
+    source: "TWIN POLE LABS",
     date: "OCT 2024",
     readTime: "7 MIN READ",
   },
@@ -243,7 +243,7 @@ export const INSIGHTS: Insight[] = [
     title: "Praseodymium-Neodymium Prices: Structural Drivers and a 24-Month Forward View",
     excerpt:
       "NdPr oxide has seen 40% price swings in 18 months. We decompose the drivers — Chinese quotas, EV demand acceleration, inventory cycles — and model the forward price range through 2026.",
-    source: "MAGNETO ANALYTICS",
+    source: "TWIN POLE ANALYTICS",
     date: "SEP 2024",
     readTime: "10 MIN READ",
   },
@@ -304,7 +304,7 @@ export const NARRATIVE_PILLARS: NarrativePillar[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "Magneto gave us the confidence to renegotiate our sourcing contract six months before the market shifted. That's not something a market report gives you.",
+      "Twin Pole gave us the confidence to renegotiate our sourcing contract six months before the market shifted. That's not something a market report gives you.",
     attribution: "VP, Global Procurement",
     role: "Tier-1 EV Supplier",
   },
@@ -373,7 +373,7 @@ export const RESEARCH_DOMAIN_TAGS: string[] = [
   "Fe-P SOFT MAGNETIC ALLOYS",
   "RARE EARTH SUPPLY STRATEGY",
   "URBAN MINING & RECYCLING",
-  "MAGNETOCALORIC MATERIALS",
+  "TWIN POLECALORIC MATERIALS",
   "HIGH-Tc SUPERCONDUCTORS",
 ];
 
@@ -405,7 +405,7 @@ export const CONSULTATION_TIERS: ConsultationTier[] = [
     name: "Introductory Session",
     features: [
       "Scope your challenge with Dr Gopalan",
-      "Understand if Magneto is the right fit",
+      "Understand if Twin Pole is the right fit",
       "High-level strategic orientation",
       "No obligation, no pitch",
     ],
@@ -456,3 +456,100 @@ export const FOOTER_LINKS = [
   { label: "About", href: "/about" },
   { label: "Book Dr Gopalan", href: "/contact" },
 ];
+
+/* ------------------------------------------------------------------ */
+/* Site identity                                                       */
+/* ------------------------------------------------------------------ */
+
+export const SITE = {
+  name: "Twin Pole Partners",
+  short: "Twin Pole",
+  url: "https://twinpolepartners.com",
+  description:
+    "Strategic advisory for rare-earth permanent magnets, EV supply chains, and advanced manufacturing intelligence.",
+  email: "hello@twinpolepartners.com",
+};
+
+/* ------------------------------------------------------------------ */
+/* Scheduling                                                          */
+/*                                                                     */
+/* Paste a Calendly / Cal.com / Google Appointment link against a tier */
+/* and its button becomes live booking. Leave it empty and that tier   */
+/* falls back to the request form, so the page works either way.       */
+/* ------------------------------------------------------------------ */
+
+export const SCHEDULING: Record<string, string> = {
+  discovery: "", // e.g. https://calendly.com/twinpole/discovery-30min
+  expert: "", //    e.g. https://calendly.com/twinpole/strategy-60min
+  retainer: "", //  retainer stays an enquiry - no self-serve slot
+};
+
+/* ------------------------------------------------------------------ */
+/* Demagnetisation curve — the three parameters every grade decision   */
+/* comes back to.                                                      */
+/* ------------------------------------------------------------------ */
+
+export interface CurveParam {
+  symbol: string;
+  name: string;
+  description: string;
+}
+
+export const CURVE_PARAMS: CurveParam[] = [
+  {
+    symbol: "Br",
+    name: "Remanence",
+    description:
+      "How much field the magnet keeps once you stop driving it. Sets torque density — and therefore how much magnet mass your motor design actually needs.",
+  },
+  {
+    symbol: "Hc",
+    name: "Coercivity",
+    description:
+      "How hard it is to demagnetise. This is the parameter that fails first at temperature, and the one that quietly forces dysprosium into your bill of materials.",
+  },
+  {
+    symbol: "BH",
+    name: "Energy product",
+    description:
+      "Peak of the second quadrant — the honest measure of grade. It is also where cost, thermal headroom, and sourcing risk all collide.",
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* Photographic plates                                                 */
+/*                                                                     */
+/* Drop a file into /public/plates/ and set `src` to light it up.      */
+/* Until then the slot renders as a reserved frame rather than an      */
+/* invented image.                                                     */
+/* ------------------------------------------------------------------ */
+
+export interface Plate {
+  id: string;
+  src?: string;
+  caption: string;
+  subject: string;
+}
+
+export const PLATES: Record<string, Plate> = {
+  hero: {
+    id: "hero",
+    caption: "Iron filings on a dipole field",
+    subject: "Iron filings, dipole field",
+  },
+  foundry: {
+    id: "foundry",
+    caption: "Plate 01 · Vacuum induction furnace, permanent-magnet foundry",
+    subject: "Vacuum induction furnace · magnet foundry",
+  },
+  lab: {
+    id: "lab",
+    caption: "Plate 02 · Electron microscopy, materials laboratory",
+    subject: "Materials laboratory · electron microscope",
+  },
+  portrait: {
+    id: "portrait",
+    caption: "Dr Raghavan Gopalan",
+    subject: "Portrait",
+  },
+};

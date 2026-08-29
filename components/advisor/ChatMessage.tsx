@@ -2,50 +2,57 @@ import Link from "next/link";
 import type { ChatMessageData } from "@/lib/types";
 
 function renderInline(text: string, key: string, isUser: boolean) {
-  const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\])/g).filter(Boolean);
-  return parts.map((part, i) => {
-    if (part.startsWith("**") && part.endsWith("**")) {
-      return (
-        <strong key={`${key}-${i}`} className="font-semibold">
-          {part.slice(2, -2)}
-        </strong>
-      );
-    }
-    if (part.startsWith("[") && part.endsWith("]")) {
-      return (
-        <Link
-          key={`${key}-${i}`}
-          href="/contact"
-          className={`font-medium underline underline-offset-2 ${
-            isUser ? "text-white" : "text-[var(--accent)] hover:text-[var(--accent-dark)]"
-          }`}
-        >
-          {part.slice(1, -1)}
-        </Link>
-      );
-    }
-    return <span key={`${key}-${i}`}>{part}</span>;
-  });
+  return text
+    .split(/(\*\*[^*]+\*\*|\[[^\]]+\])/g)
+    .filter(Boolean)
+    .map((part, i) => {
+      if (part.startsWith("**") && part.endsWith("**")) {
+        return (
+          <strong key={`${key}-${i}`} className="font-semibold">
+            {part.slice(2, -2)}
+          </strong>
+        );
+      }
+      if (part.startsWith("[") && part.endsWith("]")) {
+        return (
+          <Link
+            key={`${key}-${i}`}
+            href="/contact"
+            className={`border-b ${
+              isUser
+                ? "border-[rgba(10,13,18,0.4)] text-[var(--void)]"
+                : "border-[var(--nd-line)] text-[var(--nd)]"
+            }`}
+          >
+            {part.slice(1, -1)}
+          </Link>
+        );
+      }
+      return <span key={`${key}-${i}`}>{part}</span>;
+    });
 }
 
 export default function ChatMessage({ message }: { message: ChatMessageData }) {
   const isUser = message.role === "user";
-  const lines = message.text.split("\n");
 
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
       <div
-        className={`max-w-[85%] rounded-[10px] px-4 py-3 text-[13px] leading-[1.6] ${
+        className={`max-w-[86%] rounded-[2px] px-[17px] py-3.5 text-[13px] leading-[1.62] ${
           isUser
-            ? "bg-[var(--ink)] text-white"
-            : "border border-[var(--border)] bg-[var(--bg-alt)] text-[var(--text)]"
+            ? "bg-[var(--nd)] text-[var(--void)]"
+            : "border border-l-2 border-[var(--line)] border-l-[var(--nd)] bg-[var(--panel2)] text-[var(--bone)]"
         }`}
       >
-        {lines.map((line, i) => (
-          <p key={i} className={line.trim() === "" ? "h-2" : "mb-1.5 last:mb-0 font-light"}>
-            {renderInline(line, `${message.id}-${i}`, isUser)}
-          </p>
-        ))}
+        {message.text.split("\n").map((line, i) =>
+          line.trim() === "" ? (
+            <div key={i} className="h-1.5" />
+          ) : (
+            <p key={i} className={`mb-2 last:mb-0 ${isUser ? "font-normal" : "font-light"}`}>
+              {renderInline(line, `${message.id}-${i}`, isUser)}
+            </p>
+          ),
+        )}
       </div>
     </div>
   );

@@ -6,9 +6,10 @@ import type { Metric } from "@/lib/types";
 interface MetricBlockProps {
   metric: Metric;
   delay?: number;
+  index?: number;
 }
 
-export default function MetricBlock({ metric, delay = 0 }: MetricBlockProps) {
+export default function MetricBlock({ metric, delay = 0, index = 0 }: MetricBlockProps) {
   const [display, setDisplay] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   const started = useRef(false);
@@ -17,45 +18,71 @@ export default function MetricBlock({ metric, delay = 0 }: MetricBlockProps) {
     const el = ref.current;
     if (!el) return;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // Deferred a frame: setting state synchronously in an effect body would
+      // cascade a render, and the value is identical either way.
+      const id = requestAnimationFrame(() => setDisplay(metric.value));
+      return () => cancelAnimationFrame(id);
+    }
+
+    let timeout: ReturnType<typeof setTimeout>;
+    let interval: ReturnType<typeof setInterval>;
+
+    const run = () => {
+      if (started.current) return;
+      started.current = true;
+      timeout = setTimeout(() => {
+        const steps = 58;
+        let step = 0;
+        interval = setInterval(() => {
+          step += 1;
+          const k = Math.min(step / steps, 1);
+          setDisplay(metric.value * (1 - Math.pow(1 - k, 3)));
+          if (step >= steps) clearInterval(interval);
+        }, 1500 / steps);
+      }, delay + 200);
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          const timeout = setTimeout(() => {
-            const steps = 60;
-            const duration = 1400;
-            let step = 0;
-            const interval = setInterval(() => {
-              step += 1;
-              const progress = step / steps;
-              setDisplay(metric.value * Math.min(progress, 1));
-              if (step >= steps) clearInterval(interval);
-            }, duration / steps);
-          }, delay);
-          return () => clearTimeout(timeout);
-        }
+        if (entry.isIntersecting) run();
       },
-      { threshold: 0.3 },
+      { threshold: 0.2 },
     );
-
     observer.observe(el);
-    return () => observer.disconnect();
+    // A hero metric is on screen at load; fire regardless of observer timing.
+    if (el.getBoundingClientRect().top < window.innerHeight) run();
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(timeout);
+      clearInterval(interval);
+    };
   }, [delay, metric.value]);
 
   const formatted =
-    metric.decimals !== undefined ? display.toFixed(metric.decimals) : Math.round(display).toString();
+    metric.decimals !== undefined
+      ? display.toFixed(metric.decimals)
+      : Math.round(display).toString();
+
+  const critical = /china/i.test(metric.label);
 
   return (
-    <div ref={ref} className="flex flex-col gap-1.5 py-4 sm:px-6 sm:py-0">
-      <span className="font-[family-name:var(--font-heading)] text-[30px] font-medium tracking-[-0.5px] text-[var(--ink)]">
+    <div
+      ref={ref}
+      className={`flex flex-col gap-2 border-[var(--line)] px-0 py-[26px] sm:px-7 ${
+        index > 0 ? "sm:border-l" : ""
+      } ${index >= 2 ? "border-t sm:border-t-0" : ""}`}
+    >
+      <span className="mono text-[var(--dim)]">{metric.label}</span>
+      <span className="display num text-[34px] font-bold">
         {metric.prefix}
         {formatted}
         {metric.suffix}
       </span>
-      <span className="text-[11px] uppercase tracking-[0.08em] text-[var(--text2)]">
-        {metric.label}
+      <span className={`text-[11.5px] ${critical ? "text-[var(--crit)]" : "text-[var(--mute)]"}`}>
+        {metric.sub}
       </span>
-      <span className="text-[12px] text-[var(--accent)]">{metric.sub}</span>
     </div>
   );
 }
