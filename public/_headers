@@ -1,0 +1,23 @@
+# Cloudflare Pages headers.
+#
+# No Content-Security-Policy here on purpose: Calendly injects its own script,
+# stylesheet and iframe at runtime, and a CSP tight enough to be worth having
+# would need those origins enumerated. Better no CSP than one that silently
+# breaks booking — add it deliberately once the third-party set is settled.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), interest-cohort=()
+
+# Content-hashed by the build, so these can never go stale.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Not content-hashed — cache hard but allow a refresh when they are replaced.
+/brand/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/plates/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800

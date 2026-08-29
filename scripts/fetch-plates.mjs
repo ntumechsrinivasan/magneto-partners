@@ -27,7 +27,7 @@ const PLATES = [
   },
   {
     file: "lab.jpg",
-    url: "https://cdn.gamma.app/n3mmv9l056in4it/design-anything/PSPUr2LUfHUe6Zr7ZePtR/H0yPBe6cXJ_Yhw.jpg",
+    url: "https://cdn.gamma.app/n3mmv9l056in4it/design-anything/PSPUr2LUfHUe6Zr7ZePtR/H0yPBe6cXJ2mrG0ql_Yhw.jpg",
     note: "Materials characterisation laboratory",
   },
 ];
