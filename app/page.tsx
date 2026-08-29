@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Hero from "@/components/sections/Hero";
+import ScrollStage from "@/components/sections/ScrollStage";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ServiceCard from "@/components/ui/ServiceCard";
 import IndustryCard from "@/components/ui/IndustryCard";
@@ -48,15 +49,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--line)] pb-20">
-        <Plate plate={PLATES.foundry} className="h-[46vh] min-h-[320px]" showCaption={false} />
-        <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
-          <div className="mono mt-4 flex justify-between gap-5 text-[var(--dim)]">
-            <span>{PLATES.foundry.caption}</span>
-            <span>Fig. 02</span>
-          </div>
-        </div>
-      </section>
+      <ScrollStage />
 
       <section className="border-t border-[var(--line)] px-6 py-20 lg:px-10" data-nav="/services">
         <div className="mx-auto max-w-[1280px]">

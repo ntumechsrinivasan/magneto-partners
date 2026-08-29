@@ -139,8 +139,13 @@ h3 {
 }
 
 /* Photographic plates */
+
+/* No `position` here on purpose. Tailwind v4 emits its utilities inside a
+   cascade layer, and unlayered CSS beats layered CSS whatever the
+   specificity — so a `position` set here would silently outrank `absolute`
+   on the same element and collapse any full-bleed plate to zero height.
+   Plate.tsx supplies `relative` only when the caller has not positioned it. */
 .plate {
-  position: relative;
   overflow: hidden;
   background: #0d1118;
 }

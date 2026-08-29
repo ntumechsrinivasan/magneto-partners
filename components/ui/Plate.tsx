@@ -27,9 +27,14 @@ export default function Plate({
   const filled = Boolean(plate.src) && !failed;
   const handleFail = useCallback(() => setFailed(true), []);
 
+  // The plate needs to be a positioning context for its grain and vignette
+  // layers, but a caller placing it full-bleed supplies its own positioning.
+  // Emitting both would leave the winner down to Tailwind's output order.
+  const positioned = /\b(absolute|fixed|relative|sticky)\b/.test(className);
+
   return (
     <figure className="m-0">
-      <div className={`plate wipe ${className}`}>
+      <div className={`plate wipe ${positioned ? "" : "relative"} ${className}`}>
         {plate.src && !failed && (
           <div className="absolute inset-0">
             <PlateImage

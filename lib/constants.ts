@@ -322,6 +322,35 @@ export const ARRIVAL_SIGNALS: string[] = [
   "You are assessing a supplier, a recycling route, or an acquisition target and need technical due diligence.",
 ];
 
+export interface Stage {
+  plate: string;
+  eyebrow: string;
+  headline: string;
+  copy: string;
+}
+
+/** The three moments of the pinned scroll sequence — one idea each. */
+export const STAGES: Stage[] = [
+  {
+    plate: "terrain",
+    eyebrow: "01 — Separation",
+    headline: "It starts as ore.",
+    copy: "Monazite and bastnäsite carry a dozen rare earths at once. Separating neodymium and praseodymium from the rest is where most of the cost, and most of the concentration risk, actually sits.",
+  },
+  {
+    plate: "foundry",
+    eyebrow: "02 — Processing",
+    headline: "It becomes a magnet.",
+    copy: "Strip casting, hydrogen decrepitation, jet milling, alignment, sintering, grain boundary diffusion. Every step sets a property you will later be asked to guarantee.",
+  },
+  {
+    plate: "rotor",
+    eyebrow: "03 — Consequence",
+    headline: "It decides what your motor can do.",
+    copy: "Torque density, thermal margin, and the size of your bill-of-materials risk are all downstream of a grade someone chose. Usually years before anyone noticed it mattered.",
+  },
+];
+
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
