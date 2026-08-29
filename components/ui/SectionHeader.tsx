@@ -12,7 +12,7 @@ export default function SectionHeader({ tag, title, description }: SectionHeader
       <div className="flex max-w-[640px] flex-col gap-5">
         <h2 className="display text-[clamp(30px,3.6vw,46px)]">{title}</h2>
         {description && (
-          <p className="text-[16px] font-light leading-[1.65] text-[var(--mute)]">{description}</p>
+          <p className="text-[18px] font-light leading-[1.65] text-[var(--mute)]">{description}</p>
         )}
       </div>
     </div>

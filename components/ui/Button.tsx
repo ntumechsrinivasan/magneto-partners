@@ -14,9 +14,9 @@ interface ButtonProps {
 
 const styles: Record<string, string> = {
   primary:
-    "rounded-[2px] bg-[var(--nd)] px-6 py-[14px] text-[13px] font-semibold text-[var(--void)] hover:bg-[var(--nd-hi)]",
+    "rounded-[2px] bg-[var(--nd)] px-6 py-[14px] text-[15px] font-semibold text-[var(--void)] hover:bg-[var(--nd-hi)]",
   ghost:
-    "border-b border-[var(--line2)] pb-1 text-[13.5px] font-medium text-[var(--bone)] hover:border-[var(--nd)] hover:text-[var(--nd)]",
+    "border-b border-[var(--line2)] pb-1 text-[15.5px] font-medium text-[var(--bone)] hover:border-[var(--nd)] hover:text-[var(--nd)]",
 };
 
 export default function Button({

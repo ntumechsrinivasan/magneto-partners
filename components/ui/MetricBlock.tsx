@@ -75,12 +75,12 @@ export default function MetricBlock({ metric, delay = 0, index = 0 }: MetricBloc
       } ${index >= 2 ? "border-t sm:border-t-0" : ""}`}
     >
       <span className="mono text-[var(--dim)]">{metric.label}</span>
-      <span className="display num text-[34px] font-bold">
+      <span className="display num text-[36px] font-bold">
         {metric.prefix}
         {formatted}
         {metric.suffix}
       </span>
-      <span className={`text-[11.5px] ${critical ? "text-[var(--crit)]" : "text-[var(--mute)]"}`}>
+      <span className={`text-[13px] ${critical ? "text-[var(--crit)]" : "text-[var(--mute)]"}`}>
         {metric.sub}
       </span>
     </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Archivo, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import NewsTicker from "@/components/layout/NewsTicker";
 import Duotone from "@/components/ui/Duotone";
 import { SITE } from "@/lib/constants";
 import "./globals.css";
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${archivo.variable} ${jetbrains.variable} antialiased`}>
         <Duotone />
         <Navbar />
+        <NewsTicker />
         {children}
         <Footer />
       </body>

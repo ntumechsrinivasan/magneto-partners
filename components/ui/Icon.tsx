@@ -16,6 +16,8 @@ import {
   Smartphone,
   Landmark,
   Lock,
+  Flame,
+  FlaskConical,
   type LucideProps,
 } from "lucide-react";
 
@@ -37,6 +39,8 @@ const ICON_MAP = {
   smartphone: Smartphone,
   landmark: Landmark,
   lock: Lock,
+  flame: Flame,
+  flask: FlaskConical,
 } as const;
 
 export type IconKey = keyof typeof ICON_MAP;

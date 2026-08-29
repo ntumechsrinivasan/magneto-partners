@@ -7,22 +7,22 @@ import { HERO_METRICS, PLATES, SITE } from "@/lib/constants";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-[var(--line)]">
-      <div className="absolute inset-0 z-0 opacity-[0.17]">
+    <section className="relative flex min-h-[88vh] flex-col justify-between overflow-hidden border-b border-[var(--line)]">
+      <div className="absolute inset-0 z-0 opacity-[0.2]">
         <Plate plate={PLATES.hero} className="absolute inset-0" showCaption={false} cropInset={40} />
       </div>
       <FieldCanvas />
 
-      <div className="pointer-events-none relative z-[2] mx-auto max-w-[1280px] px-6 pt-20 lg:px-10 lg:pt-[132px]">
+      <div className="pointer-events-none relative z-[2] mx-auto w-full max-w-[1280px] px-6 pt-24 lg:px-10 lg:pt-[148px]">
         <div className="pointer-events-auto">
           <div className="eyebrow eyebrow--rule mono">Strategic materials advisory</div>
 
-          <h1 className="display mt-[26px] max-w-[16ch] text-[clamp(38px,6.4vw,84px)]">
+          <h1 className="display mt-[26px] max-w-[13ch] text-[clamp(42px,6vw,88px)]">
             <span className="num text-[var(--nd)]">85%</span> of the world&rsquo;s magnets answer to
             one country.
           </h1>
 
-          <p className="mt-7 max-w-[46ch] text-[16.5px] font-light leading-[1.7] text-[var(--mute)]">
+          <p className="mt-7 max-w-[46ch] text-[18.5px] font-light leading-[1.7] text-[var(--mute)]">
             {SITE.short} Partners advises the companies that cannot afford to find out what that
             means — rare-earth sourcing, grade selection, localisation and recycling strategy, with
             direct counsel from Dr R Gopalan.
@@ -31,14 +31,14 @@ export default function Hero() {
           <div className="mt-10 flex flex-wrap items-center gap-7">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 rounded-[2px] bg-[var(--nd)] px-6 py-[14px] text-[13px] font-semibold text-[var(--void)] transition-colors duration-200 hover:bg-[var(--nd-hi)]"
+              className="inline-flex items-center gap-2 rounded-[2px] bg-[var(--nd)] px-6 py-[14px] text-[15px] font-semibold text-[var(--void)] transition-colors duration-200 hover:bg-[var(--nd-hi)]"
             >
               Explore solutions
               <ArrowRight className="h-[15px] w-[15px]" />
             </Link>
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-2 border-b border-[var(--line2)] pb-1 text-[13.5px] font-medium text-[var(--bone)] transition-colors duration-200 hover:border-[var(--nd)] hover:text-[var(--nd)]"
+              className="group inline-flex items-center gap-2 border-b border-[var(--line2)] pb-1 text-[15.5px] font-medium text-[var(--bone)] transition-colors duration-200 hover:border-[var(--nd)] hover:text-[var(--nd)]"
             >
               Speak to an expert
               <ArrowRight className="h-[15px] w-[15px]" />

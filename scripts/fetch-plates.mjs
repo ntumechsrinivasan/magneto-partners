@@ -1,36 +1,45 @@
 #!/usr/bin/env node
 /**
- * Downloads the section imagery into public/plates/.
+ * Mirrors the section imagery into public/plates/.
+ *
+ * The plate list is read straight out of lib/constants.ts so this script and
+ * the site can never disagree about which files exist or where they come
+ * from — adding a plate there is all that is needed.
+ *
+ * This runs as the build's `prebuild` step. It never fails the build: a plate
+ * whose file is missing falls back to its remote URL at runtime, and only if
+ * that fails too does the reserved frame appear.
  *
  * These are AI-generated illustrative images, not archival photographs — see
- * the note in lib/constants.ts. Replace them with licensed or commissioned
- * photography before this becomes a credibility-led client site.
+ * the provenance note in lib/constants.ts. Replace them with licensed or
+ * commissioned photography before this becomes a credibility-led client site.
  *
  *   npm run plates
  */
 
-import { mkdir, writeFile, access } from "node:fs/promises";
+import { mkdir, writeFile, access, readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const OUT = join(process.cwd(), "public", "plates");
+const SOURCE = join(process.cwd(), "lib", "constants.ts");
 
-const PLATES = [
-  {
-    file: "filings.jpg",
-    url: "https://cdn.gamma.app/n3mmv9l056in4it/design-anything/A7De5EAHrAtq4RUskWZHB/CJeSpH7XPCIETivIv6uKr.jpg",
-    note: "Iron filings on a dipole field",
-  },
-  {
-    file: "foundry.jpg",
-    url: "https://cdn.gamma.app/n3mmv9l056in4it/design-anything/celwb3JXZ8qjYG2xyCuvF/Whadw6pSFAmHXPAS4Wzhk.jpg",
-    note: "Vacuum induction melting, magnet foundry",
-  },
-  {
-    file: "lab.jpg",
-    url: "https://cdn.gamma.app/n3mmv9l056in4it/design-anything/PSPUr2LUfHUe6Zr7ZePtR/H0yPBe6cXJ2mrG0ql_Yhw.jpg",
-    note: "Materials characterisation laboratory",
-  },
-];
+/** Pull `src` / `remote` pairs out of the PLATES literal. */
+async function readPlates() {
+  const ts = await readFile(SOURCE, "utf8");
+  const cdn = ts.match(/const CDN = "([^"]+)"/)?.[1] ?? "";
+  const plates = [];
+  const entry = /src:\s*"\/plates\/([^"]+)",\s*\n\s*remote:\s*`\$\{CDN\}([^`]+)`/g;
+  for (const m of ts.matchAll(entry)) {
+    plates.push({ file: m[1], url: cdn + m[2] });
+  }
+  return plates;
+}
+
+const PLATES = await readPlates();
+if (!PLATES.length) {
+  console.error("! No plates found in lib/constants.ts — nothing to mirror.");
+  process.exit(0);
+}
 
 await mkdir(OUT, { recursive: true });
 
@@ -52,16 +61,14 @@ for (const plate of PLATES) {
     const buf = Buffer.from(await res.arrayBuffer());
     if (buf.length < 1024) throw new Error(`suspiciously small (${buf.length} bytes)`);
     await writeFile(dest, buf);
-    console.log(`✓ ${plate.file}  ${(buf.length / 1024).toFixed(0)} KB  — ${plate.note}`);
+    console.log(`✓ ${plate.file}  ${(buf.length / 1024).toFixed(0)} KB`);
     ok++;
   } catch (err) {
     console.error(`✗ ${plate.file}  ${err.message}`);
-    console.error(`  ${plate.url}`);
   }
 }
 
-console.log(`\n${ok}/${PLATES.length} in place.`);
+console.log(`\n${ok}/${PLATES.length} mirrored locally.`);
 if (ok < PLATES.length) {
-  console.log("Any that failed: save the URL by hand into public/plates/ under the same filename.");
-  console.log("Slots with no file render as a reserved frame, so the site stays presentable.");
+  console.log("The rest will load from their remote URLs at runtime.");
 }

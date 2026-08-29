@@ -34,6 +34,7 @@ export default function Plate({
           <div className="absolute inset-0">
             <PlateImage
               src={plate.src}
+              remote={plate.remote}
               alt={plate.caption}
               natural={plate.treatment === "natural"}
               onFail={handleFail}
@@ -55,10 +56,8 @@ export default function Plate({
             ].map((pos) => (
               <i key={pos} className={`absolute h-4 w-4 border-[rgba(148,105,254,0.55)] ${pos}`} />
             ))}
-            <b className="mono absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 text-center font-normal leading-[2] text-[var(--mute)]">
+            <b className="mono absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 text-center font-normal leading-[2] text-[var(--dim)]">
               {plate.subject}
-              <br />
-              <span className="text-[var(--nd)]">Image slot · photograph to be placed</span>
             </b>
           </span>
         )}
@@ -67,7 +66,6 @@ export default function Plate({
       {showCaption && (
         <figcaption className="mono mt-3.5 flex justify-between gap-5 text-[var(--dim)]">
           <span>{plate.caption}</span>
-          {!filled && <span className="text-[var(--nd)]">Image to be placed</span>}
         </figcaption>
       )}
     </figure>

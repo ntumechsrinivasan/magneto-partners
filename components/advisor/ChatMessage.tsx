@@ -38,7 +38,7 @@ export default function ChatMessage({ message }: { message: ChatMessageData }) {
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
       <div
-        className={`max-w-[86%] rounded-[2px] px-[17px] py-3.5 text-[13px] leading-[1.62] ${
+        className={`max-w-[86%] rounded-[2px] px-[17px] py-3.5 text-[15px] leading-[1.62] ${
           isUser
             ? "bg-[var(--nd)] text-[var(--void)]"
             : "border border-l-2 border-[var(--line)] border-l-[var(--nd)] bg-[var(--panel2)] text-[var(--bone)]"

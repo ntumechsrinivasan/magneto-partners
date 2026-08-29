@@ -1,0 +1,31 @@
+{
+  "_note": "Drives the running headline band. Replace the array from a real feed — a scheduled rebuild, a Worker route, or by hand. Only publish an item under a source that actually published it.",
+  "updated": "2026-08-29",
+  "headlines": [
+    {
+      "category": "GEOPOLITICS",
+      "title": "The Rare-Earth Standoff: How China's Export Controls Are Reshaping Global Magnet Supply Chains",
+      "source": "TWIN POLE RESEARCH DESK"
+    },
+    {
+      "category": "EV STRATEGY",
+      "title": "Grade Selection Under Thermal Load: What Dy-Lean Routes Actually Cost",
+      "source": "TWIN POLE ANALYTICS"
+    },
+    {
+      "category": "RECYCLING ECONOMICS",
+      "title": "Urban Mining at Scale: Where Closed-Loop Magnet Recovery Becomes Bankable",
+      "source": "TWIN POLE RESEARCH DESK"
+    },
+    {
+      "category": "MARKET INTELLIGENCE",
+      "title": "NdPr Price Bands Through 2027 and the Policy Templates That Move Them",
+      "source": "TWIN POLE ANALYTICS"
+    },
+    {
+      "category": "LOCALISATION",
+      "title": "Building a Domestic Magnet Ecosystem: Feedstock, Separation, Sintering",
+      "source": "TWIN POLE RESEARCH DESK"
+    }
+  ]
+}

@@ -8,8 +8,8 @@ export default function NarrativePillar({ pillar, index = 0 }: { pillar: PillarD
       }`}
     >
       <span className="mono text-[var(--nd)]">{pillar.eyebrow}</span>
-      <h3 className="display-tight text-[22px] leading-[1.22]">{pillar.headline}</h3>
-      <p className="text-[14px] font-light leading-[1.7] text-[var(--mute)]">{pillar.copy}</p>
+      <h3 className="display-tight text-[24px] leading-[1.22]">{pillar.headline}</h3>
+      <p className="text-[16px] font-light leading-[1.7] text-[var(--mute)]">{pillar.copy}</p>
     </div>
   );
 }

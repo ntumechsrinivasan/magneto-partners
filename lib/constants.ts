@@ -62,6 +62,20 @@ export const SERVICES: Service[] = [
       "End-to-end strategic advisory for organisations dependent on permanent magnet supply. We assess grade requirements, sourcing risk, and long-term procurement architecture.",
   },
   {
+    icon: "flame",
+    tag: "PROCESS ENGINEERING",
+    title: "Rare-Earth Magnet Processing",
+    description:
+      "Process advisory across the full sintered-magnet route — strip casting, hydrogen decrepitation, jet milling, alignment and sintering, grain boundary diffusion, and post-sinter finishing — including Dy-lean and Dy-free coercivity routes.",
+  },
+  {
+    icon: "flask",
+    tag: "MATERIALS SELECTION",
+    title: "New Magnetic Materials Selection",
+    description:
+      "Evaluation and qualification of emerging hard and soft magnetic materials against a real application envelope — SmCo, SmFeN, Mn-based and Dy-free NdFeB, soft magnetic composites and Fe-P alloys — with the trade-offs against cost, temperature and supply risk made explicit.",
+  },
+  {
     icon: "globe",
     tag: "MARKET INTELLIGENCE",
     title: "Rare-Earth Supply Intelligence",
@@ -467,7 +481,8 @@ export const SITE = {
   url: "https://twinpolepartners.com",
   description:
     "Strategic advisory for rare-earth permanent magnets, EV supply chains, and advanced manufacturing intelligence.",
-  email: "hello@twinpolepartners.com",
+  /* General enquiries. Anything that is not a booking lands here. */
+  email: "info@twinpolepartners.com",
 };
 
 /* ------------------------------------------------------------------ */
@@ -519,20 +534,28 @@ export const CURVE_PARAMS: CurveParam[] = [
 /* ------------------------------------------------------------------ */
 /* Photographic plates                                                 */
 /*                                                                     */
-/* Files live in /public/plates/. `npm run plates` fetches the current */
-/* set; a slot whose file is missing falls back to a reserved frame    */
-/* rather than a broken image, so the site is always presentable.      */
+/* Each plate names a local file under /public/plates/ and the remote  */
+/* original it came from. `npm run plates` (which also runs as the     */
+/* build's prebuild step) mirrors the remote into the local path, so a */
+/* deployed site normally serves its own copies. If a local file is    */
+/* missing the plate falls back to `remote`, and only if that fails    */
+/* too does the reserved frame appear — so a slot cannot silently sit  */
+/* empty the way it did before.                                        */
 /*                                                                     */
-/* NOTE ON PROVENANCE: the foundry, laboratory and filings images are  */
-/* AI-generated illustrative imagery, not archival photographs. The    */
-/* captions below deliberately describe the subject without asserting  */
-/* documentary provenance. Before this carries real client weight,     */
-/* replace them with licensed or commissioned photography.             */
+/* NOTE ON PROVENANCE: every plate except the portrait is AI-generated */
+/* illustrative imagery, not an archival photograph. The captions      */
+/* describe the subject without asserting documentary provenance.      */
+/* Replace them with licensed or commissioned photography before this  */
+/* site carries real client weight.                                    */
 /* ------------------------------------------------------------------ */
+
+const CDN = "https://cdn.gamma.app/n3mmv9l056in4it/design-anything";
 
 export interface Plate {
   id: string;
   src?: string;
+  /** Origin the local file is mirrored from; also the runtime fallback. */
+  remote?: string;
   caption: string;
   subject: string;
   /** "duotone" grades the image into the brand palette; "natural" leaves a
@@ -545,20 +568,65 @@ export const PLATES: Record<string, Plate> = {
   hero: {
     id: "hero",
     src: "/plates/filings.jpg",
+    remote: `${CDN}/EwENhrDxr49In2PjYeMaM/a8UuALSsv4smM6JFPW1bW.jpg`,
     caption: "Iron filings on a dipole field",
     subject: "Iron filings, dipole field",
   },
   foundry: {
     id: "foundry",
     src: "/plates/foundry.jpg",
+    remote: `${CDN}/ZkLnmMWbulq459iGJuBMC/qjxSf9A82t0cT75enEV2f.jpg`,
     caption: "Vacuum induction melting — permanent-magnet foundry",
     subject: "Vacuum induction furnace · magnet foundry",
   },
   lab: {
     id: "lab",
     src: "/plates/lab.jpg",
+    remote: `${CDN}/wcj9WWIM5xEyNd6Hylhl9/eqh9tPXOa7WZ1J5yq5VB8.jpg`,
     caption: "Materials characterisation laboratory",
-    subject: "Materials laboratory · electron microscope",
+    subject: "Materials laboratory · magnetometry bench",
+  },
+  bench: {
+    id: "bench",
+    src: "/plates/bench.jpg",
+    remote: `${CDN}/9dBxk9fBOgY2Gr6rpOSVu/arMzstnyBbAxEvf2oYecb.jpg`,
+    caption: "Sintered block on the surface plate — dimensional check",
+    subject: "Metrology bench · sintered block",
+  },
+  rotor: {
+    id: "rotor",
+    src: "/plates/rotor.jpg",
+    remote: `${CDN}/IFBoiCk7mzqQqdQws0iHY/m0gBsXflKg4vtarU_s6Vj.jpg`,
+    caption: "Traction rotor, laminated stack with magnet slots",
+    subject: "EV traction rotor · assembly hall",
+  },
+  archive: {
+    id: "archive",
+    src: "/plates/archive.jpg",
+    remote: `${CDN}/ii7lvi0hrmKrELvT66NzM/MJ60yBb-P2ZNrzeSBJ-eb.jpg`,
+    caption: "The literature, read closely",
+    subject: "Research reading room",
+  },
+  boardroom: {
+    id: "boardroom",
+    src: "/plates/boardroom.jpg",
+    remote: `${CDN}/BUXJFj3gj5tSMs3M7FLOv/vh5sR_VioeOtwVr_tiz2Q.jpg`,
+    caption: "Where the decision actually gets made",
+    subject: "Boardroom at dusk",
+  },
+  terrain: {
+    id: "terrain",
+    src: "/plates/terrain.jpg",
+    remote: `${CDN}/zz6F3NnJE3H71sR4UfpZV/XzT49gu_Zq190PC6bezpO.jpg`,
+    caption: "Separation and settling — the upstream end of the chain",
+    subject: "Rare-earth processing plant",
+  },
+  gap: {
+    id: "gap",
+    src: "/plates/gap.jpg",
+    remote: `${CDN}/P1GBXjwQJ1XsHA4YZSkSh/9jX_350UgaE7scvnOqh8J.jpg`,
+    caption: "Sample entering the pole gap",
+    subject: "Electromagnet pole gap",
   },
   portrait: {
     id: "portrait",

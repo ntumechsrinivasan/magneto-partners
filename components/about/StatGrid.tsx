@@ -8,8 +8,8 @@ export default function StatGrid({ stats }: { stats: Credential[] }) {
           key={stat.label}
           className="flex flex-col gap-2 border-b border-r border-[var(--line)] px-6 py-[26px]"
         >
-          <b className="display num text-[30px] font-bold">{stat.value}</b>
-          <span className="text-[12px] font-light leading-[1.5] text-[var(--mute)]">{stat.label}</span>
+          <b className="display num text-[32px] font-bold">{stat.value}</b>
+          <span className="text-[13.5px] font-light leading-[1.5] text-[var(--mute)]">{stat.label}</span>
         </div>
       ))}
     </div>

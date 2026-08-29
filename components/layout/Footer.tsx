@@ -14,10 +14,10 @@ export default function Footer() {
                 alt={SITE.name}
                 width={1000}
                 height={215}
-                className="h-[40px] w-auto"
+                className="h-[56px] w-auto"
               />
             </Link>
-            <p className="mt-4 max-w-[34ch] text-[13px] font-light leading-[1.65] text-[var(--mute)]">
+            <p className="mt-4 max-w-[34ch] text-[15px] font-light leading-[1.65] text-[var(--mute)]">
               {SITE.description}
             </p>
           </div>

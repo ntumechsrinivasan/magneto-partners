@@ -7,12 +7,12 @@ export default function InsightCard({ insight }: { insight: Insight; index?: num
       <div>
         <h3
           className={`display-tight mb-2.5 leading-[1.28] transition-colors duration-200 group-hover:text-[var(--nd)] ${
-            insight.featured ? "text-[30px]" : "text-[21px]"
+            insight.featured ? "text-[32px]" : "text-[23px]"
           }`}
         >
           {insight.title}
         </h3>
-        <p className="max-w-[62ch] text-[13.5px] font-light leading-[1.65] text-[var(--mute)]">
+        <p className="max-w-[62ch] text-[15.5px] font-light leading-[1.65] text-[var(--mute)]">
           {insight.excerpt}
         </p>
       </div>

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Hero from "@/components/sections/Hero";
-import Hysteresis from "@/components/sections/Hysteresis";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ServiceCard from "@/components/ui/ServiceCard";
 import IndustryCard from "@/components/ui/IndustryCard";
@@ -17,7 +16,6 @@ import {
   INSIGHTS,
   NARRATIVE_PILLARS,
   TESTIMONIALS,
-  CURVE_PARAMS,
   PLATES,
 } from "@/lib/constants";
 
@@ -27,7 +25,7 @@ export default function HomePage() {
       <Reveal />
       <Hero />
 
-      <section className="px-6 py-32 lg:px-10">
+      <section className="px-6 py-20 lg:px-10">
         <div className="mx-auto grid max-w-[1280px] grid-cols-1 sm:grid-cols-3">
           {NARRATIVE_PILLARS.map((pillar, i) => (
             <NarrativePillar key={pillar.eyebrow} pillar={pillar} index={i} />
@@ -35,50 +33,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--line)] pb-28">
-        <Plate plate={PLATES.foundry} className="h-[64vh] min-h-[400px]" showCaption={false} />
+      <section className="border-t border-[var(--line)] pb-20">
+        <Plate plate={PLATES.foundry} className="h-[46vh] min-h-[320px]" showCaption={false} />
         <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
           <div className="mono mt-4 flex justify-between gap-5 text-[var(--dim)]">
             <span>{PLATES.foundry.caption}</span>
-            <span className="text-[var(--nd)]">Awaiting archival photograph</span>
+            <span>Fig. 02</span>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-[var(--line)] px-6 py-32 lg:px-10">
-        <div className="mx-auto max-w-[1280px]">
-          <SectionHeader
-            tag="Fig. 01 — Demagnetisation"
-            title="Every grade decision comes back to one curve."
-            description="The hysteresis loop is how a permanent magnet declares what it can survive. Its second quadrant is where procurement, thermal design, and sourcing risk actually get decided."
-          />
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-[72px]">
-            <div className="rv">
-              <Hysteresis />
-            </div>
-            <div className="flex flex-col">
-              {CURVE_PARAMS.map((p) => (
-                <div
-                  key={p.symbol}
-                  className="rv grid grid-cols-[76px_1fr] gap-6 border-t border-[var(--line)] py-[22px] last:border-b"
-                >
-                  <div className="pt-0.5 font-[family-name:var(--font-jetbrains)] text-[17px] text-[var(--nd)]">
-                    {p.symbol}
-                  </div>
-                  <div>
-                    <h3 className="mb-1.5 text-[15px] font-semibold">{p.name}</h3>
-                    <p className="text-[13.5px] font-light leading-[1.65] text-[var(--mute)]">
-                      {p.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-[var(--line)] px-6 py-32 lg:px-10">
+      <section className="border-t border-[var(--line)] px-6 py-20 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
           <SectionHeader
             tag="Services"
@@ -92,13 +57,13 @@ export default function HomePage() {
           </div>
           <div className="mt-11">
             <Button href="/services" variant="ghost" showArrow>
-              All eight services
+              All ten services
             </Button>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-[var(--line)] px-6 py-32 lg:px-10">
+      <section className="border-t border-[var(--line)] px-6 py-20 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
           <SectionHeader tag="Industries" title="Sectors we power" />
           <div className="grid grid-cols-1 border-l border-t border-[var(--line)] sm:grid-cols-2 lg:grid-cols-4">
@@ -114,7 +79,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--line)] px-6 py-32 lg:px-10">
+      <section className="border-t border-[var(--line)] px-6 py-20 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
           <SectionHeader tag="Field notes" title="What clients say when the pressure is on" />
           <div className="grid grid-cols-1 border-t border-[var(--line)] sm:grid-cols-3">
@@ -125,7 +90,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--line)] px-6 py-32 lg:px-10">
+      <section className="border-t border-[var(--line)] px-6 py-20 lg:px-10">
         <div className="mx-auto max-w-[1280px]">
           <SectionHeader tag="Insights" title="Industrial intelligence & market research" />
           <div className="flex flex-col">
@@ -141,20 +106,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--line)] bg-[var(--panel)] px-6 py-28 lg:px-10">
-        <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-10 lg:grid-cols-[180px_1fr]">
+      <section className="relative overflow-hidden border-t border-[var(--line)] bg-[var(--panel)] px-6 py-28 lg:px-10">
+        <div className="absolute inset-0 z-0 opacity-[0.16]">
+          <Plate
+            plate={PLATES.boardroom}
+            className="absolute inset-0"
+            showCaption={false}
+            cropInset={40}
+          />
+        </div>
+        <div className="relative z-[1] mx-auto grid max-w-[1280px] grid-cols-1 gap-10 lg:grid-cols-[180px_1fr]">
           <div className="mono rv text-[var(--nd)]">Engage</div>
           <div className="rv">
             <h2 className="display max-w-[15ch] text-[clamp(30px,3.8vw,50px)]">
               Speak directly with Dr R Gopalan.
             </h2>
-            <p className="mt-6 max-w-[48ch] text-[15.5px] font-light leading-[1.7] text-[var(--mute)]">
+            <p className="mt-6 max-w-[48ch] text-[17.5px] font-light leading-[1.7] text-[var(--mute)]">
               INAE Fellow. PhD IIT Madras. 35+ years across DRDO, NIMS Japan and ARCI. 200+
               publications, 14 patents, and 22 years on national mission programmes.
             </p>
             <Link
               href="/contact"
-              className="mt-10 inline-flex items-center gap-2 rounded-[2px] bg-[var(--nd)] px-6 py-[14px] text-[13px] font-semibold text-[var(--void)] transition-colors duration-200 hover:bg-[var(--nd-hi)]"
+              className="mt-10 inline-flex items-center gap-2 rounded-[2px] bg-[var(--nd)] px-6 py-[14px] text-[15px] font-semibold text-[var(--void)] transition-colors duration-200 hover:bg-[var(--nd-hi)]"
             >
               Book a consultation
               <ArrowRight className="h-[15px] w-[15px]" />

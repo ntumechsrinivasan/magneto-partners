@@ -13,7 +13,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[rgba(10,13,18,0.82)] backdrop-blur-[14px]">
-      <div className="mx-auto flex h-[68px] max-w-[1280px] items-center justify-between gap-6 px-6 lg:px-10">
+      <div className="mx-auto flex h-[88px] max-w-[1280px] items-center justify-between gap-6 px-6 lg:px-10">
         <Link href="/" aria-label={`${SITE.name} home`} className="flex items-center">
           <Image
             src="/brand/lockup-dark.png"
@@ -21,7 +21,7 @@ export default function Navbar() {
             width={1000}
             height={215}
             priority
-            className="h-[28px] w-auto lg:h-[34px]"
+            className="h-[40px] w-auto lg:h-[52px]"
           />
         </Link>
 
@@ -34,7 +34,7 @@ export default function Navbar() {
                 href={link.href}
                 className={`mono relative transition-colors duration-200 ${
                   active
-                    ? "text-[var(--bone)] after:absolute after:inset-x-0 after:-bottom-6 after:h-[2px] after:bg-[var(--nd)]"
+                    ? "text-[var(--bone)] after:absolute after:inset-x-0 after:-bottom-8 after:h-[2px] after:bg-[var(--nd)]"
                     : "text-[var(--mute)] hover:text-[var(--bone)]"
                 }`}
               >

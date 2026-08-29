@@ -10,9 +10,9 @@ interface BookingTierCardProps {
 }
 
 const priceColor: Record<string, string> = {
-  standard: "text-[var(--flux)] text-[27px]",
-  featured: "text-[var(--bone)] text-[34px]",
-  gold: "text-[var(--nd)] text-[34px]",
+  standard: "text-[var(--flux)] text-[29px]",
+  featured: "text-[var(--bone)] text-[36px]",
+  gold: "text-[var(--nd)] text-[36px]",
 };
 
 export default function BookingTierCard({ tier, onSelect }: BookingTierCardProps) {
@@ -28,7 +28,7 @@ export default function BookingTierCard({ tier, onSelect }: BookingTierCardProps
       <div className="flex flex-wrap items-center gap-2.5">
         <span className="mono text-[var(--dim)]">{tier.badge}</span>
         {tier.featuredBadge && (
-          <span className="mono bg-[var(--nd)] px-2.5 py-1 text-[9.5px] text-[var(--void)]">
+          <span className="mono bg-[var(--nd)] px-2.5 py-1 text-[11px] text-[var(--void)]">
             {tier.featuredBadge}
           </span>
         )}
@@ -39,13 +39,13 @@ export default function BookingTierCard({ tier, onSelect }: BookingTierCardProps
         <div className="mono mt-1.5 text-[var(--dim)]">{tier.sub}</div>
       </div>
 
-      <h3 className="text-[17px] font-semibold">{tier.name}</h3>
+      <h3 className="text-[19px] font-semibold">{tier.name}</h3>
 
       <ul className="flex flex-col">
         {tier.features.map((f) => (
           <li
             key={f}
-            className="grid grid-cols-[20px_1fr] gap-1.5 border-t border-[var(--line)] py-[9px] text-[12.5px] font-light leading-[1.5] text-[var(--mute)] first:border-t-0 first:pt-0"
+            className="grid grid-cols-[20px_1fr] gap-1.5 border-t border-[var(--line)] py-[9px] text-[14px] font-light leading-[1.5] text-[var(--mute)] first:border-t-0 first:pt-0"
           >
             <Check className="mt-[3px] h-[13px] w-[13px] text-[var(--nd)]" />
             <span>{f}</span>
@@ -56,7 +56,7 @@ export default function BookingTierCard({ tier, onSelect }: BookingTierCardProps
       <button
         type="button"
         onClick={() => onSelect(tier)}
-        className={`mt-auto inline-flex items-center justify-center gap-2 rounded-[2px] px-[18px] py-[13px] text-[12.5px] font-semibold transition-colors duration-200 ${
+        className={`mt-auto inline-flex items-center justify-center gap-2 rounded-[2px] px-[18px] py-[13px] text-[14px] font-semibold transition-colors duration-200 ${
           featured
             ? "border border-[var(--nd)] bg-[var(--nd)] text-[var(--void)] hover:border-[var(--nd-hi)] hover:bg-[var(--nd-hi)]"
             : "border border-[var(--line2)] text-[var(--bone)] hover:border-[var(--nd)] hover:text-[var(--nd)]"
