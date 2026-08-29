@@ -99,28 +99,85 @@ async function readFeed(feed) {
   }
 }
 
+const STOPWORDS = new Set([
+  "the", "and", "for", "with", "from", "that", "this", "into", "over", "amid",
+  "says", "said", "will", "after", "more", "than", "its", "his", "her", "new",
+  "how", "why", "what", "when", "who", "are", "was", "were", "has", "have",
+]);
+
+/** Significant words, for judging whether two headlines are the same story. */
+function tokens(title) {
+  return new Set(
+    title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]+/g, " ")
+      .split(/\s+/)
+      .filter((w) => w.length >= 4 && !STOPWORDS.has(w)),
+  );
+}
+
+/**
+ * True when two headlines are covering the same story.
+ *
+ * Exact matching is not enough here. The feed queries overlap on purpose, so
+ * the same article comes back under several of them, and a syndicated story
+ * appears under a different publisher with the headline reworded or trimmed.
+ * Comparing significant words and measuring against the shorter of the two
+ * catches both — a truncated headline is still mostly a subset of the full one.
+ */
+function sameStory(a, b) {
+  const smaller = Math.min(a.size, b.size);
+  if (!smaller) return false;
+  let shared = 0;
+  for (const w of a) if (b.has(w)) shared++;
+  return shared / smaller >= 0.6;
+}
+
 async function headlines() {
   const batches = await Promise.all(FEEDS.map(readFeed));
 
-  const seen = new Set();
+  const seenUrls = new Set();
+  const seenTitles = new Set();
+  const seenTokens = [];
+  const perSource = new Map();
   const merged = [];
+
+  function accept(item) {
+    // The same article reached through two queries keeps the same link.
+    if (item.url && seenUrls.has(item.url)) return false;
+    const flat = item.title.toLowerCase().replace(/[^a-z0-9]+/g, "");
+    if (seenTitles.has(flat)) return false;
+
+    const t = tokens(item.title);
+    if (seenTokens.some((prev) => sameStory(t, prev))) return false;
+
+    // No single outlet should be able to fill the band.
+    const n = perSource.get(item.source) || 0;
+    if (n >= 3) return false;
+
+    if (item.url) seenUrls.add(item.url);
+    seenTitles.add(flat);
+    seenTokens.push(t);
+    perSource.set(item.source, n + 1);
+    merged.push(item);
+    return true;
+  }
+
   // Round-robin across the feeds so one prolific source cannot fill the band.
   for (let i = 0; merged.length < MAX_ITEMS; i++) {
-    let added = false;
+    let reachable = false;
     for (const batch of batches) {
       if (i >= batch.length) continue;
-      added = true;
-      const item = batch[i];
-      const key = item.title.toLowerCase().replace(/[^a-z0-9]+/g, "");
-      if (seen.has(key)) continue;
-      seen.add(key);
-      merged.push(item);
+      reachable = true;
+      accept(batch[i]);
       if (merged.length >= MAX_ITEMS) break;
     }
-    if (!added) break;
+    if (!reachable) break;
   }
   return merged;
 }
+
+export { headlines as _headlines };
 
 const handler = {
   async fetch(request, env, ctx) {
