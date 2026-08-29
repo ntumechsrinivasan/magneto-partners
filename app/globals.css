@@ -154,6 +154,12 @@ h3 {
   object-fit: cover;
   filter: url(#duotone) contrast(1.06) brightness(1.02);
 }
+/* Portraits keep their own colour — just pulled slightly toward the cold
+   palette so they sit in the page without being recoloured. */
+.plate img.plate-natural {
+  filter: saturate(0.82) contrast(1.04);
+  object-position: center top;
+}
 .wipe {
   clip-path: inset(0 0 100% 0);
   transition: clip-path 1.15s cubic-bezier(0.16, 0.84, 0.3, 1);

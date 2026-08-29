@@ -15,12 +15,12 @@ export default function DrGopalanProfile() {
 
   return (
     <div className="rv border border-[var(--line)]">
-      <div className="grid grid-cols-1 border-b border-[var(--line)] lg:grid-cols-[200px_1fr]">
+      <div className="grid grid-cols-1 border-b border-[var(--line)] lg:grid-cols-[248px_1fr]">
         <div className="flex flex-col items-start gap-4 border-b border-[var(--line)] p-8 lg:border-b-0 lg:border-r">
           <div className="relative">
             <Plate
               plate={PLATES.portrait}
-              className="h-[168px] w-[136px] border border-[var(--nd-line)]"
+              className="h-[224px] w-[180px] border border-[var(--nd-line)]"
               showCaption={false}
               cropInset={10}
             />

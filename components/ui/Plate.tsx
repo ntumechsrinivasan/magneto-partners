@@ -28,7 +28,11 @@ export default function Plate({
         {filled ? (
           <div className="absolute inset-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="settle" src={plate.src} alt={plate.caption} />
+            <img
+              className={`settle ${plate.treatment === "natural" ? "plate-natural" : ""}`}
+              src={plate.src}
+              alt={plate.caption}
+            />
           </div>
         ) : (
           <span

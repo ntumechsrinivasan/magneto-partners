@@ -529,6 +529,10 @@ export interface Plate {
   src?: string;
   caption: string;
   subject: string;
+  /** "duotone" grades the image into the brand palette; "natural" leaves a
+   *  face looking like a face. Portraits are the trust asset — a violet
+   *  Dr Gopalan would undercut exactly what the photograph is there to do. */
+  treatment?: "duotone" | "natural";
 }
 
 export const PLATES: Record<string, Plate> = {
@@ -549,7 +553,9 @@ export const PLATES: Record<string, Plate> = {
   },
   portrait: {
     id: "portrait",
+    src: "/plates/gopalan.webp",
     caption: "Dr Raghavan Gopalan",
     subject: "Portrait",
+    treatment: "natural",
   },
 };
