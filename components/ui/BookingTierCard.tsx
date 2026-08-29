@@ -1,6 +1,7 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { Check, CalendarClock } from "lucide-react";
+import { SCHEDULING } from "@/lib/constants";
 import type { ConsultationTier } from "@/lib/types";
 
 interface BookingTierCardProps {
@@ -16,6 +17,7 @@ const priceColor: Record<string, string> = {
 
 export default function BookingTierCard({ tier, onSelect }: BookingTierCardProps) {
   const featured = tier.variant === "featured";
+  const bookable = Boolean(SCHEDULING[tier.id]);
 
   return (
     <div
@@ -54,13 +56,14 @@ export default function BookingTierCard({ tier, onSelect }: BookingTierCardProps
       <button
         type="button"
         onClick={() => onSelect(tier)}
-        className={`mt-auto rounded-[2px] px-[18px] py-[13px] text-[12.5px] font-semibold transition-colors duration-200 ${
+        className={`mt-auto inline-flex items-center justify-center gap-2 rounded-[2px] px-[18px] py-[13px] text-[12.5px] font-semibold transition-colors duration-200 ${
           featured
             ? "border border-[var(--nd)] bg-[var(--nd)] text-[var(--void)] hover:border-[var(--nd-hi)] hover:bg-[var(--nd-hi)]"
             : "border border-[var(--line2)] text-[var(--bone)] hover:border-[var(--nd)] hover:text-[var(--nd)]"
         }`}
       >
-        {tier.buttonLabel}
+        {bookable && <CalendarClock className="h-[14px] w-[14px]" />}
+        {bookable ? "Book a time" : tier.buttonLabel}
       </button>
     </div>
   );

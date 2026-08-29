@@ -2,13 +2,14 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import FieldCanvas from "./FieldCanvas";
 import MetricBlock from "@/components/ui/MetricBlock";
-import { HERO_METRICS, SITE } from "@/lib/constants";
+import Plate from "@/components/ui/Plate";
+import { HERO_METRICS, PLATES, SITE } from "@/lib/constants";
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-[var(--line)]">
       <div className="absolute inset-0 z-0 opacity-[0.17]">
-        <div className="plate absolute inset-0" />
+        <Plate plate={PLATES.hero} className="absolute inset-0" showCaption={false} cropInset={40} />
       </div>
       <FieldCanvas />
 

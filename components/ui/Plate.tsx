@@ -1,18 +1,21 @@
+"use client";
+
+import { useCallback, useState } from "react";
+import PlateImage from "./PlateImage";
 import type { Plate as PlateData } from "@/lib/constants";
 
 interface PlateProps {
   plate: PlateData;
   className?: string;
   showCaption?: boolean;
-  depth?: number;
   cropInset?: number;
 }
 
 /**
- * A photographic slot. When `plate.src` is set it renders the image under the
- * archival duotone; until then it renders a reserved frame with registration
- * marks, so an empty slot reads as deliberate rather than as a broken or
- * invented image.
+ * A photographic slot. When `plate.src` resolves it renders the image under
+ * the archival duotone; when it is unset — or fails to load — it renders a
+ * reserved frame with registration marks, so an empty slot reads as
+ * deliberate rather than as a broken or invented image.
  */
 export default function Plate({
   plate,
@@ -20,21 +23,25 @@ export default function Plate({
   showCaption = true,
   cropInset = 22,
 }: PlateProps) {
-  const filled = Boolean(plate.src);
+  const [failed, setFailed] = useState(false);
+  const filled = Boolean(plate.src) && !failed;
+  const handleFail = useCallback(() => setFailed(true), []);
 
   return (
     <figure className="m-0">
       <div className={`plate wipe ${className}`}>
-        {filled ? (
+        {plate.src && !failed && (
           <div className="absolute inset-0">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className={`settle ${plate.treatment === "natural" ? "plate-natural" : ""}`}
+            <PlateImage
               src={plate.src}
               alt={plate.caption}
+              natural={plate.treatment === "natural"}
+              onFail={handleFail}
             />
           </div>
-        ) : (
+        )}
+
+        {!filled && (
           <span
             className="pointer-events-none absolute z-[3]"
             style={{ inset: cropInset }}
@@ -60,7 +67,7 @@ export default function Plate({
       {showCaption && (
         <figcaption className="mono mt-3.5 flex justify-between gap-5 text-[var(--dim)]">
           <span>{plate.caption}</span>
-          {!filled && <span className="text-[var(--nd)]">Awaiting archival photograph</span>}
+          {!filled && <span className="text-[var(--nd)]">Image to be placed</span>}
         </figcaption>
       )}
     </figure>

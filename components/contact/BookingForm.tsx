@@ -53,7 +53,7 @@ export default function BookingForm({ selectedPlanId }: { selectedPlanId: string
           receive a calendar link and confirmation within two business hours.
           {!hasScheduler && (
             <span className="mono mt-2 block text-[var(--dim)]">
-              Live scheduling not yet connected — this tier uses the request form
+              This tier is handled by request rather than self-serve booking
             </span>
           )}
         </div>

@@ -519,9 +519,15 @@ export const CURVE_PARAMS: CurveParam[] = [
 /* ------------------------------------------------------------------ */
 /* Photographic plates                                                 */
 /*                                                                     */
-/* Drop a file into /public/plates/ and set `src` to light it up.      */
-/* Until then the slot renders as a reserved frame rather than an      */
-/* invented image.                                                     */
+/* Files live in /public/plates/. `npm run plates` fetches the current */
+/* set; a slot whose file is missing falls back to a reserved frame    */
+/* rather than a broken image, so the site is always presentable.      */
+/*                                                                     */
+/* NOTE ON PROVENANCE: the foundry, laboratory and filings images are  */
+/* AI-generated illustrative imagery, not archival photographs. The    */
+/* captions below deliberately describe the subject without asserting  */
+/* documentary provenance. Before this carries real client weight,     */
+/* replace them with licensed or commissioned photography.             */
 /* ------------------------------------------------------------------ */
 
 export interface Plate {
@@ -538,17 +544,20 @@ export interface Plate {
 export const PLATES: Record<string, Plate> = {
   hero: {
     id: "hero",
+    src: "/plates/filings.jpg",
     caption: "Iron filings on a dipole field",
     subject: "Iron filings, dipole field",
   },
   foundry: {
     id: "foundry",
-    caption: "Plate 01 · Vacuum induction furnace, permanent-magnet foundry",
+    src: "/plates/foundry.jpg",
+    caption: "Vacuum induction melting — permanent-magnet foundry",
     subject: "Vacuum induction furnace · magnet foundry",
   },
   lab: {
     id: "lab",
-    caption: "Plate 02 · Electron microscopy, materials laboratory",
+    src: "/plates/lab.jpg",
+    caption: "Materials characterisation laboratory",
     subject: "Materials laboratory · electron microscope",
   },
   portrait: {

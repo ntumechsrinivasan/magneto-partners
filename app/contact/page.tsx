@@ -7,22 +7,25 @@ import ConsultationTiers from "@/components/contact/ConsultationTiers";
 import BookingForm from "@/components/contact/BookingForm";
 import Reveal from "@/components/ui/Reveal";
 import { SCHEDULING } from "@/lib/constants";
+import { openCalendly } from "@/lib/calendly";
 import type { ConsultationTier } from "@/lib/types";
 
 export default function ContactPage() {
   const [selectedPlanId, setSelectedPlanId] = useState<string | null>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
-  const handleSelect = (tier: ConsultationTier) => {
-    // A tier with a scheduling link books directly; the rest fall back to the
-    // request form, so the page works with or without a scheduler connected.
-    const url = SCHEDULING[tier.id];
-    if (url) {
-      window.open(url, "_blank", "noopener");
-      return;
-    }
-    setSelectedPlanId(tier.id);
+  const toForm = (tierId: string) => {
+    setSelectedPlanId(tierId);
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleSelect = async (tier: ConsultationTier) => {
+    const url = SCHEDULING[tier.id];
+    // A tier with a link books in the Calendly overlay. If it is not
+    // configured — or the widget is blocked — fall through to the request
+    // form rather than leaving the button dead.
+    if (url && (await openCalendly(url))) return;
+    toForm(tier.id);
   };
 
   return (
