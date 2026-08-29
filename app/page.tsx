@@ -58,7 +58,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--line)] px-6 py-20 lg:px-10">
+      <section className="border-t border-[var(--line)] px-6 py-20 lg:px-10" data-nav="/services">
         <div className="mx-auto max-w-[1280px]">
           <SectionHeader
             tag="Services"
@@ -78,7 +78,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--line)] px-6 py-20 lg:px-10">
+      <section className="border-t border-[var(--line)] px-6 py-20 lg:px-10" data-nav="/industries">
         <div className="mx-auto max-w-[1280px]">
           <SectionHeader tag="Industries" title="Sectors we power" />
           <div className="grid grid-cols-1 border-l border-t border-[var(--line)] sm:grid-cols-2 lg:grid-cols-4">
@@ -105,7 +105,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--line)] px-6 py-20 lg:px-10">
+      <section className="border-t border-[var(--line)] px-6 py-20 lg:px-10" data-nav="/insights">
         <div className="mx-auto max-w-[1280px]">
           <SectionHeader tag="Insights" title="Industrial intelligence & market research" />
           <div className="flex flex-col">
@@ -121,7 +121,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-t border-[var(--line)] bg-[var(--panel)] px-6 py-28 lg:px-10">
+      <section className="relative overflow-hidden border-t border-[var(--line)] bg-[var(--panel)] px-6 py-28 lg:px-10" data-nav="/contact">
         <div className="absolute inset-0 z-0 opacity-[0.16]">
           <Plate
             plate={PLATES.boardroom}

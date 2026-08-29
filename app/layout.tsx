@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo, JetBrains_Mono } from "next/font/google";
+import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import NewsTicker from "@/components/layout/NewsTicker";
@@ -7,10 +7,33 @@ import Duotone from "@/components/ui/Duotone";
 import { SITE } from "@/lib/constants";
 import "./globals.css";
 
-const archivo = Archivo({
+/**
+ * TYPEFACES
+ *
+ * The intended pairing is Financier Display for titles and GT America for
+ * body and secondary text. Both are commercial retail faces — Financier from
+ * Klim Type Foundry, GT America from Grilli Type — and neither may be served
+ * from a website without a purchased web licence, so they are not shipped
+ * here.
+ *
+ * These two are the closest free stand-ins: Playfair Display shares
+ * Financier's high stroke contrast and sharp serifs, and Inter is a neutral
+ * grotesque in the same territory as GT America.
+ *
+ * TO SWITCH TO THE LICENSED FILES: drop the .woff2 files into app/fonts/,
+ * replace these two declarations with next/font/local pointing at them, and
+ * keep the same `variable` names. Nothing else in the codebase needs to
+ * change — every rule references the CSS variables, not the font names.
+ */
+const display = Playfair_Display({
   subsets: ["latin"],
-  axes: ["wdth"],
-  variable: "--font-archivo",
+  variable: "--font-display-face",
+  display: "swap",
+});
+
+const body = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -42,7 +65,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${archivo.variable} ${jetbrains.variable} antialiased`}>
+      <body className={`${display.variable} ${body.variable} ${jetbrains.variable} antialiased`}>
         <Duotone />
         <Navbar />
         <NewsTicker />

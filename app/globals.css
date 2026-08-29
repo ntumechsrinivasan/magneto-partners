@@ -29,7 +29,8 @@
 }
 
 @theme inline {
-  --font-display: var(--font-archivo);
+  --font-display: var(--font-display-face);
+  --font-sans: var(--font-body);
   --font-mono: var(--font-jetbrains);
 }
 
@@ -44,7 +45,7 @@ html {
 body {
   background: var(--void);
   color: var(--bone);
-  font-family: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-body), "Helvetica Neue", Arial, sans-serif;
   /* Base size drives anything not given an explicit size. The site reads at
      arm's length on desktop, so it sits above the 16px browser default. */
   font-size: 18px;
@@ -56,20 +57,24 @@ body {
 h1,
 h2,
 h3 {
+  font-family: var(--font-display-face), Georgia, "Times New Roman", serif;
   font-weight: 700;
   margin: 0;
 }
 
 .display {
-  font-variation-settings: "wdth" 118;
-  letter-spacing: -0.02em;
-  line-height: 1.02;
+  font-family: var(--font-display-face), Georgia, "Times New Roman", serif;
+  /* A high-contrast serif needs less negative tracking and more leading than
+     the grotesque this replaced, or the thin strokes start colliding. */
+  letter-spacing: -0.012em;
+  line-height: 1.08;
   text-wrap: balance;
 }
 
 .display-tight {
-  font-variation-settings: "wdth" 108;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display-face), Georgia, "Times New Roman", serif;
+  letter-spacing: -0.005em;
+  line-height: 1.24;
 }
 
 .mono {

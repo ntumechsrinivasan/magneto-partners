@@ -6,10 +6,13 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
+import { useActiveSection } from "@/lib/useActiveSection";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  // Only the homepage carries previews of the other sections to track.
+  const section = useActiveSection(pathname === "/");
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[rgba(10,13,18,0.82)] backdrop-blur-[14px]">
@@ -27,7 +30,13 @@ export default function Navbar() {
 
         <nav className="hidden items-center gap-[30px] lg:flex">
           {NAV_LINKS.map((link) => {
-            const active = pathname === link.href;
+            // On a section page the current page is the answer; on the
+            // homepage it is whichever preview the reader has scrolled to,
+            // falling back to Home above the first of them.
+            const active =
+              pathname === "/"
+                ? (section ?? "/") === link.href
+                : pathname === link.href;
             return (
               <Link
                 key={link.href}
