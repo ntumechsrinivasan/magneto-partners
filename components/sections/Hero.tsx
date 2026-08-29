@@ -17,15 +17,15 @@ export default function Hero() {
         <div className="pointer-events-auto">
           <div className="eyebrow eyebrow--rule mono">Strategic materials advisory</div>
 
-          <h1 className="display mt-[26px] max-w-[13ch] text-[clamp(42px,6vw,88px)]">
-            <span className="num text-[var(--nd)]">85%</span> of the world&rsquo;s magnets answer to
-            one country.
+          <h1 className="display mt-[26px] max-w-[15ch] text-[clamp(40px,5.4vw,80px)]">
+            Every high-performance motor comes down to{" "}
+            <span className="text-[var(--nd)]">one magnet decision</span>.
           </h1>
 
           <p className="mt-7 max-w-[46ch] text-[18.5px] font-light leading-[1.7] text-[var(--mute)]">
-            {SITE.short} Partners advises the companies that cannot afford to find out what that
-            means — rare-earth sourcing, grade selection, localisation and recycling strategy, with
-            direct counsel from Dr R Gopalan.
+            {SITE.short} Partners advises the engineering and procurement teams making it — grade
+            selection, processing routes, sourcing strategy, localisation and recycling economics —
+            with direct counsel from Dr R Gopalan.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-7">

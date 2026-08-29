@@ -26,30 +26,28 @@ export const NAV_LINKS = [
 
 export const HERO_METRICS: Metric[] = [
   {
-    label: "EV Motor Demand 2030E",
-    value: 2.8,
-    decimals: 1,
-    suffix: "M t",
-    sub: "↑ 38% CAGR vs. 2023",
+    label: "Years in permanent magnets",
+    value: 35,
+    suffix: "+",
+    sub: "DRDO · ARCI (DST) · NIMS Japan · IISc",
   },
   {
-    label: "China RE Supply Share",
-    value: 85,
-    suffix: "%",
-    sub: "Critical concentration risk",
+    label: "Peer-reviewed publications",
+    value: 200,
+    suffix: "+",
+    sub: "h-index 31 · i10-index 101",
   },
   {
-    label: "NdFeB Recycling Market",
-    value: 24,
-    prefix: "$",
-    suffix: "B",
-    sub: "Circular economy potential",
+    label: "Patents granted",
+    value: 14,
+    suffix: "",
+    sub: "National & international",
   },
   {
-    label: "Industrial AI Adoption",
-    value: 73,
-    suffix: "%",
-    sub: "Advanced mfg leaders",
+    label: "Sectors advised",
+    value: 7,
+    suffix: "",
+    sub: "EV, aerospace, defence, energy, robotics",
   },
 ];
 
@@ -80,7 +78,7 @@ export const SERVICES: Service[] = [
     tag: "MARKET INTELLIGENCE",
     title: "Rare-Earth Supply Intelligence",
     description:
-      "Real-time market intelligence on rare-earth oxide pricing, trade flows, geopolitical disruption signals, and supply-chain concentration metrics across 47 jurisdictions.",
+      "Real-time market intelligence on rare-earth oxide pricing, trade flows, supply disruption signals, and concentration metrics across 47 jurisdictions.",
   },
   {
     icon: "search",
@@ -108,7 +106,7 @@ export const SERVICES: Service[] = [
     tag: "LOCALISATION",
     title: "Manufacturing Localisation Strategy",
     description:
-      "Feasibility and site selection for magnet production capacity outside China — India, Vietnam, Europe, North America — with regulatory, logistics, and cost-parity modelling.",
+      "Feasibility and site selection for domestic and near-shore magnet production capacity — India, Vietnam, Europe, North America — with regulatory, logistics, and cost-parity modelling.",
   },
   {
     icon: "chart",
@@ -197,8 +195,8 @@ export const QUICK_QUERIES: QuickQuery[] = [
     query: "Best magnet grade for high-temperature applications above 180 degrees?",
   },
   {
-    label: "China pricing impact",
-    query: "How does China dominance affect rare-earth pricing?",
+    label: "Price outlook",
+    query: "What is driving NdPr price volatility and where do prices go next?",
   },
 ];
 
@@ -208,7 +206,7 @@ export const ADVISOR_CAPABILITIES: string[] = [
   "Supply-chain alternative sourcing",
   "Cost sensitivity & price trajectory",
   "Recycling feasibility assessment",
-  "Geopolitical risk scoring by origin",
+  "Supply risk scoring by origin",
   "ESG compliance guidance",
   "Motor application matching",
 ];
@@ -216,9 +214,9 @@ export const ADVISOR_CAPABILITIES: string[] = [
 export const INSIGHTS: Insight[] = [
   {
     featured: true,
-    category: "GEOPOLITICS",
+    category: "SUPPLY STRATEGY",
     title:
-      "The Rare-Earth Standoff: How China's Export Controls Are Reshaping Global Magnet Supply Chains",
+      "The Concentration Problem: Building Genuine Resilience Into Magnet Supply",
     excerpt:
       "As Beijing tightens controls on gallium, germanium, and heavy rare earths, the fragility of Western magnet dependency has come into sharp relief. This deep-dive examines the regulatory architecture, corporate exposure by sector, and the realistic timeline for supply-chain diversification.",
     source: "TWIN POLE RESEARCH DESK",
@@ -256,7 +254,7 @@ export const INSIGHTS: Insight[] = [
     category: "MARKET INTELLIGENCE",
     title: "Praseodymium-Neodymium Prices: Structural Drivers and a 24-Month Forward View",
     excerpt:
-      "NdPr oxide has seen 40% price swings in 18 months. We decompose the drivers — Chinese quotas, EV demand acceleration, inventory cycles — and model the forward price range through 2026.",
+      "NdPr oxide has seen 40% price swings in 18 months. We decompose the drivers — export quota policy, EV demand acceleration, inventory cycles — and model the forward price range through 2026.",
     source: "TWIN POLE ANALYTICS",
     date: "SEP 2024",
     readTime: "10 MIN READ",
@@ -275,13 +273,13 @@ export const VALUE_CARDS: ValueCardData[] = [
     icon: "cog",
     title: "Industrial Depth, Strategic Breadth",
     description:
-      "Our advisory has operated inside DRDO's national mission programmes, ARCI's automotive energy labs, and NIMS Japan's magnet research — understanding engineering constraints, commercial pressures, and geopolitical realities simultaneously.",
+      "Our advisory has operated inside DRDO's national mission programmes, ARCI's automotive energy labs, and NIMS Japan's magnet research — understanding engineering constraints, commercial pressures, and supply realities simultaneously.",
   },
   {
     icon: "globe",
-    title: "Geopolitically-Aware Intelligence",
+    title: "Policy-Aware Market Intelligence",
     description:
-      "Rare-earth markets are political markets. Dr Gopalan has tracked China's resource strategy since Program 863. We translate policy signals from China, India's IREL ecosystem, the US, EU, Japan, and Australia into actionable procurement intelligence.",
+      "Rare-earth supply is shaped as much by policy as by geology. We track incentive schemes, export and quota rules, recycled-content mandates and processing investment across India, the EU, the US, Japan and Australia, and translate them into procurement decisions you can act on.",
   },
   {
     icon: "landmark",
@@ -313,6 +311,15 @@ export const NARRATIVE_PILLARS: NarrativePillar[] = [
     headline: "Plan for the market you'll face, not the one you're in.",
     copy: "From localisation strategy to recycling economics, we help you position for where critical materials are headed next.",
   },
+];
+
+export const ARRIVAL_SIGNALS: string[] = [
+  "Your motor is losing margin at temperature and you are being told to add dysprosium.",
+  "You have been quoted a grade and have no independent way to tell whether it is the right one.",
+  "You need a second source qualified before your current one becomes a single point of failure.",
+  "The magnet is the largest bill-of-materials risk in a programme you are costing.",
+  "You are weighing whether to bring magnet production in-house, or in-country.",
+  "You are assessing a supplier, a recycling route, or an acquisition target and need technical due diligence.",
 ];
 
 export const TESTIMONIALS: Testimonial[] = [

@@ -65,8 +65,6 @@ export default function MetricBlock({ metric, delay = 0, index = 0 }: MetricBloc
       ? display.toFixed(metric.decimals)
       : Math.round(display).toString();
 
-  const critical = /china/i.test(metric.label);
-
   return (
     <div
       ref={ref}
@@ -80,7 +78,7 @@ export default function MetricBlock({ metric, delay = 0, index = 0 }: MetricBloc
         {formatted}
         {metric.suffix}
       </span>
-      <span className={`text-[13px] ${critical ? "text-[var(--crit)]" : "text-[var(--mute)]"}`}>
+      <span className="text-[15px] text-[var(--mute)]">
         {metric.sub}
       </span>
     </div>

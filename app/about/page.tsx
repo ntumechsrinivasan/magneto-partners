@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ValueCard from "@/components/ui/ValueCard";
 import StatGrid from "@/components/about/StatGrid";
+import NarrativePillar from "@/components/ui/NarrativePillar";
 import Plate from "@/components/ui/Plate";
 import Reveal from "@/components/ui/Reveal";
-import { ABOUT_STATS, VALUE_CARDS, PLATES } from "@/lib/constants";
+import { ABOUT_STATS, VALUE_CARDS, PLATES, NARRATIVE_PILLARS } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About",
@@ -28,7 +29,7 @@ export default function AboutPage() {
                 make them well.
               </p>
               <p>
-                We sit at the intersection of geopolitical intelligence, materials science, and
+                We sit at the intersection of materials science, manufacturing economics, and
                 industrial AI — helping EV manufacturers, defence contractors, energy companies, and
                 private equity navigate a supply landscape that is simultaneously the most critical
                 and least well-understood in the global economy.
@@ -58,6 +59,12 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
+        </div>
+
+        <div className="mt-20 grid grid-cols-1 border-t border-[var(--line)] sm:grid-cols-3">
+          {NARRATIVE_PILLARS.map((pillar, i) => (
+            <NarrativePillar key={pillar.eyebrow} pillar={pillar} index={i} />
+          ))}
         </div>
 
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">

@@ -5,7 +5,7 @@ export const CHAT_RESPONSE_RULES: ChatResponseRule[] = [
     keywords: ["ndfeb", "smco", "compare", "motor grade"],
     response: `**NdFeB vs SmCo — Dr Gopalan's Framework**
 
-NdFeB (N48H–N52H): Highest energy density BHmax 52 MGOe, ~$60–80/kg sintered, max 150–200°C with Dy/Tb. Dominant in EV traction globally. Dr Gopalan's research at ARCI has explored Dy-free grain boundary diffusion routes — critical given Dy's own supply concentration risk.
+NdFeB (N48H–N52H): Highest energy density BHmax 52 MGOe, ~$60–80/kg sintered, max 150–200°C with Dy/Tb. Dominant in EV traction globally. Dr Gopalan's research at ARCI has explored Dy-free grain boundary diffusion routes — valuable because dysprosium carries its own concentration and cost exposure.
 
 SmCo (2:17): Superior thermal stability to 250–300°C, Br coeff. −0.03%/°C, ~$120–160/kg. Essential for aerospace and defence — sectors Dr Gopalan directly advised through DRDO and ISRO programmes for 22+ years.
 
@@ -14,16 +14,16 @@ Notably, Dr Gopalan also developed a novel Fe-P soft magnetic alloy (core loss 1
 → [Book a grade selection session with Dr Gopalan]`,
   },
   {
-    keywords: ["supply", "risk", "concentrat", "geopolit"],
-    response: `**Rare-Earth Supply Chain Risk**
+    keywords: ["supply", "risk", "concentrat", "second source", "sourcing"],
+    response: `**Rare-Earth Supply Risk — How We Frame It**
 
-China controls ~85% of global NdPr oxide output and ~90% of sintering capacity. Dr Gopalan has described this as a 'Monroe Doctrine for materials' — China's strategy began with Program 863 in the 1980s and gradually absorbed even US intellectual property and facilities.
+The core issue is concentration, not any single origin: a large majority of NdPr oxide output and sintering capacity sits within one processing ecosystem, so a disruption anywhere in it reaches every downstream buyer at once.
 
-Key risk vectors: Export quota manipulation; Myanmar civil conflict disrupting ~30% of China's heavy RE feedstock; ESG traceability scrutiny.
+What that means for a procurement plan: qualify a second source before you need one; hold grade flexibility so a substitution is an engineering decision rather than an emergency; and treat quota and export-policy changes as a scheduling risk, not a pricing footnote.
 
 India's emerging role: Kerala, Odisha, Andhra Pradesh, and Tamil Nadu hold significant monazite-rich deposits — an area Dr Gopalan has directly addressed through ARCI's national mission programmes, with IREL and BARC forming the processing ecosystem.
 
-Japan's response model (reducing RE import dependency from 83% to much lower levels via recycling, substitution, and NIMS-TOYOTA joint ventures) is instructive.
+Japan's response model — reducing rare-earth import dependency from 83% via recycling, substitution, and NIMS-TOYOTA joint ventures — remains the clearest worked example of a country reducing exposure without sacrificing performance.
 
 → [Book a supply chain strategy session with Dr Gopalan]`,
   },
@@ -60,16 +60,14 @@ Watch: Dy-free NdFeB routes via grain boundary diffusion — Dr Gopalan's team a
 → [Discuss thermal requirements with Dr Gopalan]`,
   },
   {
-    keywords: ["china", "price", "pricing", "ndpr", "neodymium", "praseodymium", "cost"],
-    response: `**China's Rare-Earth Dominance — Dr Gopalan's Assessment**
+    keywords: ["price", "pricing", "ndpr", "neodymium", "praseodymium", "cost", "outlook"],
+    response: `**NdPr Price Outlook**
 
-~85% global NdPr oxide, ~90% sintering capacity. China's Program 863 (1980s onward) was a deliberate state-directed accumulation that eventually absorbed US IP and facilities — Dr Gopalan likens this to a modern 'Monroe Doctrine for materials'.
+Recent history: 2021 peak $175/kg → 2023 trough $48/kg → 2024–25 average $65–80/kg. That is a market that has moved by a factor of three inside four years, which is why magnet cost belongs in your risk register rather than your bill of materials alone.
 
-NdPr price: 2021 peak $175/kg → 2023 trough $48/kg → 2024–25 avg $65–80/kg.
+Twin Pole models $80–120/kg through 2027 as EV volumes reaccelerate, with upside tail risk if export or quota policy tightens. The practical hedge is rarely financial — it is grade flexibility, a qualified second source, and a recycled-content route that is already tested rather than merely identified.
 
-Twin Pole models $80–120/kg through 2027 as EV acceleration resumes, with upside tail risk from export restriction escalation — China's gallium/germanium restrictions provide the policy template.
-
-India's Atmanirbhar Bharat response: Dr Gopalan's ARCI programmes directly address the national mission to build a domestic rare-earth magnet ecosystem.
+India's Atmanirbhar Bharat programmes are building domestic processing capacity, work Dr Gopalan has led directly through ARCI's national mission.
 
 → [Get Dr Gopalan's market outlook briefing]`,
   },

@@ -8,7 +8,7 @@ import { INSIGHTS, PLATES } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Insights",
   description:
-    "Industrial intelligence and market research on rare-earth geopolitics, EV strategy, recycling economics, industrial AI, and magnet market pricing.",
+    "Industrial intelligence and market research on rare-earth supply strategy, EV materials, recycling economics, industrial AI, and magnet market pricing.",
 };
 
 export default function InsightsPage() {

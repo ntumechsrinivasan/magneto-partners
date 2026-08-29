@@ -6,7 +6,6 @@ import ServiceCard from "@/components/ui/ServiceCard";
 import IndustryCard from "@/components/ui/IndustryCard";
 import InsightCard from "@/components/ui/InsightCard";
 import TestimonialCard from "@/components/ui/TestimonialCard";
-import NarrativePillar from "@/components/ui/NarrativePillar";
 import Button from "@/components/ui/Button";
 import Plate from "@/components/ui/Plate";
 import Reveal from "@/components/ui/Reveal";
@@ -14,7 +13,7 @@ import {
   SERVICES,
   INDUSTRIES,
   INSIGHTS,
-  NARRATIVE_PILLARS,
+  ARRIVAL_SIGNALS,
   TESTIMONIALS,
   PLATES,
 } from "@/lib/constants";
@@ -26,10 +25,26 @@ export default function HomePage() {
       <Hero />
 
       <section className="px-6 py-20 lg:px-10">
-        <div className="mx-auto grid max-w-[1280px] grid-cols-1 sm:grid-cols-3">
-          {NARRATIVE_PILLARS.map((pillar, i) => (
-            <NarrativePillar key={pillar.eyebrow} pillar={pillar} index={i} />
-          ))}
+        <div className="mx-auto max-w-[1280px]">
+          <SectionHeader
+            tag="Who we work with"
+            title="You are in the right place if&hellip;"
+          />
+          <div className="grid grid-cols-1 border-t border-[var(--line)] md:grid-cols-2">
+            {ARRIVAL_SIGNALS.map((signal, i) => (
+              <div
+                key={signal}
+                className={`rv grid grid-cols-[42px_1fr] gap-3 border-b border-[var(--line)] py-6 md:pr-10 ${
+                  i % 2 === 1 ? "md:border-l md:pl-10" : ""
+                }`}
+              >
+                <span className="mono pt-[3px] text-[var(--nd)]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <p className="text-[17px] font-light leading-[1.6] text-[var(--mute)]">{signal}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -48,7 +63,7 @@ export default function HomePage() {
           <SectionHeader
             tag="Services"
             title="Strategic consulting for critical materials"
-            description="From supply-chain intelligence to advanced manufacturing strategy — operating at the intersection of geopolitics, materials science, and industrial AI."
+            description="From grade selection and processing routes to sourcing strategy — operating at the intersection of materials science, manufacturing economics, and industrial AI."
           />
           <div className="grid grid-cols-1 border-l border-t border-[var(--line)] sm:grid-cols-2 lg:grid-cols-4">
             {SERVICES.slice(0, 4).map((s) => (

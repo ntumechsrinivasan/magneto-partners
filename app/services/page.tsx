@@ -20,7 +20,7 @@ export default function ServicesPage() {
         <SectionHeader
           tag="Services"
           title="Strategic consulting for critical materials"
-          description="From supply-chain intelligence to advanced manufacturing strategy — operating at the intersection of geopolitics, materials science, and industrial AI."
+          description="From grade selection and processing routes to sourcing strategy — operating at the intersection of materials science, manufacturing economics, and industrial AI."
         />
         <div className="mb-14">
           <Plate plate={PLATES.bench} className="h-[300px] lg:h-[440px]" />
