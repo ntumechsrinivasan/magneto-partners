@@ -1,16 +1,25 @@
 {
-  // Cloudflare deploys this project as a Worker that serves static assets.
-  // `npm run build` writes the exported site to ./out (see next.config.ts),
-  // and everything below just points Wrangler at that folder. There is no
-  // `main` entry: this is an assets-only Worker, so no server code runs.
+  // Cloudflare deploys this project as a Worker serving the static export.
+  // `npm run build` writes the site to ./out (see next.config.ts).
+  //
+  // The Worker script exists for one route — /api/headlines, which merges
+  // public RSS feeds for the running headline band, because feeds send no
+  // CORS headers and a browser cannot read them directly. Every other request
+  // is answered straight from ./out by the assets binding without the script
+  // running, so the site stays effectively free to serve.
   "name": "magneto-partners",
   "compatibility_date": "2026-08-01",
+  "main": "worker/index.js",
   "assets": {
     "directory": "./out",
+    "binding": "ASSETS",
     // next.config.ts sets trailingSlash: true, so /about/ maps to
     // out/about/index.html and /about redirects to it.
     "html_handling": "auto-trailing-slash",
     // Serve the exported out/404.html for anything that doesn't match.
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    // /api/* has no file behind it, so it must reach the script before asset
+    // matching decides it is a 404.
+    "run_worker_first": ["/api/*"]
   }
 }
