@@ -116,10 +116,10 @@ export const SERVICES: Service[] = [
   },
   {
     icon: "cpu",
-    tag: "AI-POWERED",
-    title: "AI-Driven Materials Insights",
+    tag: "ANALYTICS",
+    title: "Applied Modelling & Analytics",
     description:
-      "Proprietary AI models for magnet material recommendation, supply disruption forecasting, cost sensitivity modelling, and automated technical specification matching.",
+      "Cost sensitivity models, price and demand scenario work, and specification-matching tools built against your own data for a specific engagement — using machine learning where the dataset genuinely supports it. Built for the question in front of you, not sold as a platform.",
   },
 ];
 

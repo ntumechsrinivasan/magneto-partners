@@ -128,7 +128,7 @@ export default function FieldCanvas() {
 
       // Halo: the field is brightest where the flux density is highest.
       const halo = g.createRadialGradient(p.mx, p.my, 0, p.mx, p.my, Math.min(W, H) * 0.52);
-      halo.addColorStop(0, `rgba(148,105,254,${(0.16 * progress).toFixed(3)})`);
+      halo.addColorStop(0, `rgba(148,105,254,${(0.19 * progress).toFixed(3)})`);
       halo.addColorStop(0.45, `rgba(148,105,254,${(0.05 * progress).toFixed(3)})`);
       halo.addColorStop(1, "rgba(148,105,254,0)");
       g.fillStyle = halo;
@@ -140,9 +140,12 @@ export default function FieldCanvas() {
         const n = pts.length >> 1;
         if (n < 2) continue;
         const shell = Math.floor(i / SPOKES);
-        const alpha = (0.34 - shell * 0.031) * progress;
+        const alpha = (0.42 - shell * 0.034) * progress;
         if (alpha <= 0.005) continue;
-        g.strokeStyle = `rgba(148,105,254,${alpha.toFixed(3)})`;
+        // Lavender-white rather than saturated violet: the plate behind the
+        // hero gives the lines something to compete with, and a near-white
+        // stroke separates from a photograph where the brand violet does not.
+        g.strokeStyle = `rgba(214,206,255,${alpha.toFixed(3)})`;
         g.lineWidth = shell < 3 ? 1.15 : 0.8;
         const drawn = Math.floor(n * progress);
         if (drawn < 2) continue;
@@ -171,7 +174,7 @@ export default function FieldCanvas() {
           for (let k = tail + 1; k < head; k++) {
             // Fade in along the pulse so it reads as a comet, not a dash.
             const f = (k - tail) / PULSE_LEN;
-            g.strokeStyle = `rgba(172,140,255,${(bright * f * f).toFixed(3)})`;
+            g.strokeStyle = `rgba(240,238,255,${(bright * f * f).toFixed(3)})`;
             g.lineWidth = 1.5 * f + 0.4;
             g.beginPath();
             g.moveTo(pts[(k - 1) * 2], pts[(k - 1) * 2 + 1]);
