@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { INSIGHTS } from "@/lib/constants";
 
 export interface Headline {
@@ -43,8 +43,34 @@ function clean(items: unknown): Headline[] | null {
   return out.length ? out : null;
 }
 
+/**
+ * Reading speed, in pixels per second.
+ *
+ * The CSS animation takes a duration, not a speed, so a fixed duration makes
+ * the band scroll faster the more headlines arrive — five seeded items crawl,
+ * twenty live ones race past. Measuring the track and deriving the duration
+ * keeps the pace identical whatever the feed returns.
+ */
+const PIXELS_PER_SECOND = 42;
+
 export default function NewsTicker() {
   const [items, setItems] = useState<Headline[]>(FALLBACK);
+  const track = useRef<HTMLDivElement>(null);
+
+  const pace = useCallback(() => {
+    const el = track.current;
+    if (!el) return;
+    // The track holds two copies, so one lap is half its width.
+    const lap = el.scrollWidth / 2;
+    if (lap > 0) el.style.animationDuration = `${(lap / PIXELS_PER_SECOND).toFixed(1)}s`;
+  }, []);
+
+  // Re-paced when the headlines change and when a resize reflows them.
+  useEffect(() => {
+    pace();
+    window.addEventListener("resize", pace);
+    return () => window.removeEventListener("resize", pace);
+  }, [pace, items]);
 
   useEffect(() => {
     let live = true;
@@ -86,13 +112,13 @@ export default function NewsTicker() {
       </div>
 
       <div className="ticker-mask relative flex-1 overflow-hidden py-[11px]">
-        <div className="ticker-track flex w-max items-center">
+        <div ref={track} className="ticker-track flex w-max items-center">
           {run.map((h, i) => {
             const body = (
               <>
                 <b className="font-normal text-[var(--nd)]">{h.category}</b>
                 <span className="mx-2.5 text-[var(--dim)]">/</span>
-                <span className="normal-case tracking-normal text-[var(--bone)] group-hover:text-[var(--nd-hi)]">
+                <span className="text-[14px] normal-case tracking-normal text-[var(--bone)] group-hover:text-[var(--nd-hi)]">
                   {h.title}
                 </span>
                 <span className="ml-3 text-[var(--dim)]">— {h.source}</span>
