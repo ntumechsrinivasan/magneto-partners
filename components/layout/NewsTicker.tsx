@@ -51,7 +51,7 @@ function clean(items: unknown): Headline[] | null {
  * twenty live ones race past. Measuring the track and deriving the duration
  * keeps the pace identical whatever the feed returns.
  */
-const PIXELS_PER_SECOND = 42;
+const PIXELS_PER_SECOND = 25;
 
 export default function NewsTicker() {
   const [items, setItems] = useState<Headline[]>(FALLBACK);
