@@ -58,20 +58,14 @@ export interface Metric {
   sub: string;
 }
 
-export interface QuickQuery {
-  label: string;
-  query: string;
-}
-
-export interface ChatMessageData {
+export interface ReferenceEntry {
   id: string;
-  role: "user" | "bot";
-  text: string;
-}
-
-export interface ChatResponseRule {
+  group: string;
+  title: string;
+  summary: string;
+  /** Lower-case terms a reader might type when looking for this entry. */
   keywords: string[];
-  response: string;
+  body: string;
 }
 
 export interface ValueCardData {

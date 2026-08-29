@@ -7,7 +7,6 @@ import type {
   ConsultationTier,
   GovernmentRole,
   Metric,
-  QuickQuery,
   ValueCardData,
   FellowshipTag,
   Testimonial,
@@ -18,7 +17,7 @@ export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Industries", href: "/industries" },
-  { label: "AI Advisor", href: "/advisor" },
+  { label: "Reference", href: "/reference" },
   { label: "Insights", href: "/insights" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
@@ -181,34 +180,6 @@ export const INDUSTRIES: Industry[] = [
     description:
       "Miniaturised magnets in speakers, haptics, and wearables — volume-driven, ESG-scrutinised supply chains.",
   },
-];
-
-export const QUICK_QUERIES: QuickQuery[] = [
-  { label: "NdFeB vs SmCo", query: "Compare NdFeB vs SmCo for EV motors" },
-  {
-    label: "Supply chain risks",
-    query: "What are the supply chain risks for rare-earth magnets?",
-  },
-  { label: "Recycling viability", query: "Explain magnet recycling feasibility" },
-  {
-    label: "High-temp grades",
-    query: "Best magnet grade for high-temperature applications above 180 degrees?",
-  },
-  {
-    label: "Price outlook",
-    query: "What is driving NdPr price volatility and where do prices go next?",
-  },
-];
-
-export const ADVISOR_CAPABILITIES: string[] = [
-  "Grade recommendation (NdFeB, SmCo, Ferrite, AlNiCo)",
-  "Temperature resistance & derating analysis",
-  "Supply-chain alternative sourcing",
-  "Cost sensitivity & price trajectory",
-  "Recycling feasibility assessment",
-  "Supply risk scoring by origin",
-  "ESG compliance guidance",
-  "Motor application matching",
 ];
 
 export const INSIGHTS: Insight[] = [
