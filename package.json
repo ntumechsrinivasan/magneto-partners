@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "plates": "node scripts/fetch-plates.mjs",
+    "prebuild": "node scripts/fetch-plates.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "plates": "node scripts/fetch-plates.mjs"
+    "lint": "eslint"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",
